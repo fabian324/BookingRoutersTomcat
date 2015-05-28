@@ -106,7 +106,7 @@ public class reserDAO {
              *
              */
             int resultado = 0;
-            pstmt = cnn.prepareStatement("INSERT INTO reservas VALUES (?,?,?,?,?,?,?,?,?,?);");
+            pstmt = cnn.prepareStatement("INSERT INTO reservas VALUES (?,?,?,?,?,?,?,?,?,?,?);");
             pstmt.setInt(1, rdto.getIdReserva());
             pstmt.setInt(2, rdto.getIdEstadoReserva());
             pstmt.setInt(3, rdto.getIdServicio());
@@ -117,6 +117,7 @@ public class reserDAO {
             pstmt.setString(8, rdto.getDireccionDestino());
             pstmt.setLong(9, rdto.getIdpersona());
             pstmt.setInt(10, rdto.getCupo());
+            pstmt.setInt(11, rdto.getNromaletas());
             resultado = pstmt.executeUpdate();
 
             if (resultado != 0) {

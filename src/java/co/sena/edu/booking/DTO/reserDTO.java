@@ -13,6 +13,33 @@ package co.sena.edu.booking.DTO;
  */
 public class reserDTO {
 
+    @Override
+    public String toString() {
+        return "reserDTO{" + "idReserva=" + idReserva + ", idEstadoReserva=" + idEstadoReserva + ", idServicio=" + idServicio + ", idTransporteLlegada=" + idTransporteLlegada + ", responsable=" + responsable + ", fechaReserva=" + fechaReserva + ", horaReserva=" + horaReserva + ", direccionDestino=" + direccionDestino + ", idpersona=" + idpersona + ", ser=" + ser + ", empre=" + empre + ", cupo=" + cupo + ", nromaletas=" + nromaletas + '}';
+    }
+    
+    private int idReserva;
+    private int idEstadoReserva;
+    private int idServicio;
+    private int idTransporteLlegada;
+    private String responsable;    
+    private String fechaReserva;
+    private String horaReserva;
+    private String direccionDestino;
+    private long idpersona;
+    private serviciosDTO ser;
+    private empresatransportesDTO empre;
+    private int cupo;
+
+    public int getNromaletas() {
+        return nromaletas;
+    }
+
+    public void setNromaletas(int nromaletas) {
+        this.nromaletas = nromaletas;
+    }
+    private int nromaletas;
+    
     public int getIdReserva() {
         return idReserva;
     }
@@ -107,26 +134,5 @@ public class reserDTO {
     public void setCupo(int cupo) {
         this.cupo = cupo;
     }
-
-    @Override
-    public String toString() {
-        return "reserDTO{" + "idReserva=" + idReserva + ", idEstadoReserva=" + idEstadoReserva + ", idServicio=" + idServicio + ", idTransporteLlegada=" + idTransporteLlegada + ", responsable=" + responsable + ", fechaReserva=" + fechaReserva + ", horaReserva=" + horaReserva + ", direccionDestino=" + direccionDestino + ", idpersona=" + idpersona + ", ser=" + ser + ", empre=" + empre + ", cupo=" + cupo + '}';
-    }
-
-    private int idReserva;
-    private int idEstadoReserva;
-    private int idServicio;
-    private int idTransporteLlegada;
-    private String responsable;    
-    private String fechaReserva;
-    private String horaReserva;
-    private String direccionDestino;
-    private long idpersona;
-    private serviciosDTO ser;
-    private empresatransportesDTO empre;
-    private int cupo;
-
-   
-   
 
 }

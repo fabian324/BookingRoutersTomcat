@@ -19,6 +19,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -60,18 +61,49 @@ public class CreaRuta extends HttpServlet {
                 cdto= facadeP.correoConductores(Integer.parseInt(objRuta.getIdConductor()));
                 pdto = facadeP.ListarUnaPersona(Long.parseLong(request.getParameter("Cliente")));
                 String asunto = "Datos Conductor";
-                String cuerpomsj = "<html>\"<body>\"<img src=\"C:\\Users\\andres\\Desktop\\BookingFase5\\web\\imagenes\" alt=\"Booking Routers\" width=\"1360\" height=\"126\" title=\"Forget the rest, call the best\"  />\"</body>\"<html>" + "su conductor es (a)" +cdto.getConductores().getNombres()+" " + cdto.getConductores().getApellidos()+ " "+"su numero de telefono por alguna eventualidad es  " + cdto.getTelContacto();
+                 String cuerpomsj= "<!DOCTYPE html>";
+        cuerpomsj += "<br>";
+        cuerpomsj += "<br>";
+        cuerpomsj+= "<br>";
+        cuerpomsj += "<body>";
+        cuerpomsj += "<center>";
+        cuerpomsj += "<h1><Strong>Bienvenido a Booking Routers</Strong></h1>";
+        cuerpomsj += "<h3><Strong>Los datos de su conductor son:</Strong></h3>";
+        cuerpomsj += "<table border='1' borderColor='#819FF7'>";
+        cuerpomsj += "<tr>";
+        cuerpomsj += "<th bgColor='#2B7BC2'>Nombre";
+        cuerpomsj += "</th>";
+        cuerpomsj += "<th bgColor='#2B7BC2'>Apellido";
+        cuerpomsj+= "</th>";
+        cuerpomsj += "<th bgColor='#2B7BC2'>Telefono";
+        cuerpomsj += "</th>";
+        cuerpomsj+= "<th bgColor='#2B7BC2'>Placa";
+        cuerpomsj += "</th>";     
+        cuerpomsj+= "</tr>";
+        cuerpomsj += "<tr>";
+        cuerpomsj += "<th bgColor='#F0F3F6'>" + cdto.getConductores().getNombres();
+        cuerpomsj += "</th>";
+        cuerpomsj += "<th bgColor='#F0F3F6'>" + cdto.getConductores().getApellidos();
+        cuerpomsj+= "</th>";
+        cuerpomsj += "<th bgColor='#F0F3F6'>"+ cdto.getTelContacto();
+        cuerpomsj += "</th>";
+        cuerpomsj+= "<th bgColor='#F0F3F6'>" +objRuta.getPlacaVehiculo();    cuerpomsj += "</th>";      
+        cuerpomsj+= "</tr>";
+        cuerpomsj += "</table>";
+                //String cuerpomsj = "<html>\"<body>\"<img src=\"C:\\Users\\andres\\Desktop\\BookingFase5\\web\\imagenes\" alt=\"Booking Routers\" width=\"1360\" height=\"126\" title=\"Forget the rest, call the best\"  />\"</body>\"<html>" + "su conductor es (a)" +cdto.getConductores().getNombres()+" " + cdto.getConductores().getApellidos()+ " "+"su numero de telefono por alguna eventualidad es  " + cdto.getTelContacto();
                 String para = pdto.getCorreoElectronico();
                 Correo.sendMail(asunto, cuerpomsj, para);    
 
                             int ru = facadeP.validarruta(Integer.parseInt(request.getParameter("Tipo")));
                             if (ru == 0) {
-                                
+                                HttpSession misesion = request.getSession(true);
+                            misesion.setAttribute("logueado", ru);
                               msj = facadeP.crearRuta(objRuta);
                                   response.sendRedirect ("CreaRuta.jsp?msj=" + msj);
                              
                             } else if (ru == 1) {
-                                
+                                HttpSession misesion = request.getSession(true);
+                                misesion.setAttribute("logueado", ru);
                                 response.sendRedirect("CreaRuta.jsp?no=");
 
                             }

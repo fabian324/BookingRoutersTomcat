@@ -55,7 +55,8 @@ FacadePersonas facadeP = new FacadePersonas();
                 to.setHoraReserva(request.getParameter("hora"));
                 to.setDireccionDestino(request.getParameter("aerop"));
                 to.setCupo(Integer.parseInt(request.getParameter("registros")));
-
+                to.setNromaletas(Integer.parseInt(request.getParameter("NumeroEquipaje")));
+                
                 String mensaje = facadeP.insertar(to);
                 int idReserva = facadeP.obtenerUltimaReserva(Integer.parseInt(request.getParameter("doc")));
                 personasDAO persona = new personasDAO();

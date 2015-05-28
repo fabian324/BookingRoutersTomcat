@@ -16,15 +16,14 @@
             response.setHeader("Cache-Control", "no-store");
             response.setDateHeader("Expires", 0);
         %>
- 
+ <meta charset="utf-8">
+<link rel="shortcut icon" href="imagenes/br.ico" />
+<title>..::Booking Routers::..</title>
         <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist/bootstrap-3.2.0-dist/css/bootstrap.css">
         <link type="text/css" rel="stylesheet" href="css/css.css">
         <script  src="jquery/jquery.js"></script>
         <script src="jquery/jquery.validate.js"></script>
         <script src="jquery/additional-methods.js"></script>
-        <meta charset="utf-8">
-        <title>..::Booking Routers::..</title>
-        <link rel="shortcut icon" href="img/br.ico" />
         <style type="text/css">
             .info, .exito, .alerta, .error {
                 font-family:Arial, Helvetica, sans-serif; 

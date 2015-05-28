@@ -4,15 +4,14 @@
 <!doctype html>
 <html>
 <head>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="imagenes/br.ico" />
+<title>..::Booking Routers::..</title>
 <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist/bootstrap-3.2.0-dist/css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/css.css">
 <script src="scripts/registro.js" type="text/javascript"></script>
 <link type="text/css" rel="stylesheet" href="sweetalert-master/dist/sweetalert.css" />
 <script src="sweetalert-master/dist/sweetalert.min.js"></script>
-<meta charset="utf-8">
-<link rel="shortcut icon" href="imagenes/br.ico" />
-<title>..::Booking Routers::..</title>
-
 </head>
 <body>
 <div class ="contenedor">
