@@ -13,10 +13,7 @@ package co.sena.edu.booking.DTO;
  */
 public class reserDTO {
 
-    @Override
-    public String toString() {
-        return "reserDTO{" + "idReserva=" + idReserva + ", idEstadoReserva=" + idEstadoReserva + ", idServicio=" + idServicio + ", idTransporteLlegada=" + idTransporteLlegada + ", responsable=" + responsable + ", fechaReserva=" + fechaReserva + ", horaReserva=" + horaReserva + ", direccionDestino=" + direccionDestino + ", idpersona=" + idpersona + ", ser=" + ser + ", empre=" + empre + ", cupo=" + cupo + ", nromaletas=" + nromaletas + '}';
-    }
+ 
     
     private int idReserva;
     private int idEstadoReserva;
@@ -30,6 +27,22 @@ public class reserDTO {
     private serviciosDTO ser;
     private empresatransportesDTO empre;
     private int cupo;
+    private int nromaletas;
+    private String nrovuelo;
+
+    @Override
+    public String toString() {
+        return "reserDTO{" + "idReserva=" + idReserva + ", idEstadoReserva=" + idEstadoReserva + ", idServicio=" + idServicio + ", idTransporteLlegada=" + idTransporteLlegada + ", responsable=" + responsable + ", fechaReserva=" + fechaReserva + ", horaReserva=" + horaReserva + ", direccionDestino=" + direccionDestino + ", idpersona=" + idpersona + ", ser=" + ser + ", empre=" + empre + ", cupo=" + cupo + ", nromaletas=" + nromaletas + ", nrovuelo=" + nrovuelo + '}';
+    }
+
+    public String getNrovuelo() {
+        return nrovuelo;
+    }
+
+    public void setNrovuelo(String nrovuelo) {
+        this.nrovuelo = nrovuelo;
+    }
+ 
 
     public int getNromaletas() {
         return nromaletas;
@@ -38,7 +51,7 @@ public class reserDTO {
     public void setNromaletas(int nromaletas) {
         this.nromaletas = nromaletas;
     }
-    private int nromaletas;
+    
     
     public int getIdReserva() {
         return idReserva;
