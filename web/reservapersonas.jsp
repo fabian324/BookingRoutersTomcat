@@ -19,6 +19,7 @@
 <script  src="jquery/jquery.js"></script>
 <script src="jquery/jquery.validate.js"></script>
 <script src="jquery/additional-methods.js"></script>
+<script src="scripts/registro.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/jquery-1.2.6.js"></script>  
 <link type="text/css" rel="stylesheet" href="css/styles/glDatePicker.default.css">
 <link type="text/css" rel="stylesheet" href="sweetalert-master/dist/sweetalert.css" />
@@ -88,7 +89,7 @@ $(document).ready(function(){
     <center>
                <table>
                    <tr>
-                <td colspan="2">
+                <td colspan="2" style="text-align: center">
                     <% if (request.getParameter("msgSalida") != null) {%>
                     <% if (!request.getParameter("msgSalida").equals("")) {%> 
                     <div class="alert exito mensajes" role="alert">
@@ -149,14 +150,14 @@ $(document).ready(function(){
     <td><input name="doc" type="text" id="doc" style="width:250px; height:25px" value="<%=prv.getPer().getIdPersona()%>" readonly="readonly" class="form-control" required/></td>
       
     <td><label for="tel" class="labele">Telefono</label><br></td>
-    <td><input type="text" id="tel" name="tel" style="width:250px; height:25px" class="form-control"autofocus required onChange="requisitos(tel)"/></td>
+    <td><input type="text" id="tel" name="tel" style="width:250px; height:25px" class="form-control"autofocus required onChange="requisitos(tel)" onkeypress="return validNumber(event)"/></td>
 </tr>
 <tr>
     <td><label for="nombrePer" class="labele">Nombres</label><br></td>
-    <td><input type="text" id="nombrePer" name="nombrePer" style="width:250px; height:25px" class="form-control" autofocus required onChange="requisitos(nombrePer)"/></td>
+    <td><input type="text" id="nombrePer" name="nombrePer" style="width:250px; height:25px" class="form-control" autofocus required onChange="requisitos(nombrePer)" onkeypress="return validLetter(event)"/></td>
 
     <td><label for="apellidoPer" class="labele">Apellidos</label><br></td>
-    <td><input type="text" id="apellidoPer" name="apellidoPer" style="width:250px; height:25px" class="form-control" autofocus required onChange="requisitos(apellidoPer)" /></td>
+    <td><input type="text" id="apellidoPer" name="apellidoPer" style="width:250px; height:25px" class="form-control" autofocus required onChange="requisitos(apellidoPer)" onkeypress="return validLetter(event)" /></td>
 </tr>
 <tr>
 <td><label for="ser" class="labele">Nacionalidad</label></td>

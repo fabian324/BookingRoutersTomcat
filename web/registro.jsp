@@ -46,7 +46,7 @@
                         <td><input name="nombres" type="text" style="width:250px; height:25px " autofocus id="nombres" placeholder="Nombres" required class="form-control" onChange="requisitos(nombres)" onkeypress="return validLetter(event);">
                         </td>
                         <td><label for="ape" class="labele"><strong>Apellidos<font color="#FF0000">*</strong></label></font></td>
-                        <td><input name="apellidos" type="text" style="width:250px; height:25px" autofocus id="apellidos" placeholder="Apellidos" required class="form-control inputtext"tabindex="2" onChange="requisitos(apellidos)" onkeypress="return validLetter(event);">
+                        <td><input name="apellidos" type="text" style="width:250px; height:25px" autofocus id="apellidos" placeholder="Apellidos" required class="form-control inputtext"tabindex="2" onChange="requisitos(apellidos)" onkeypress="return validLetter(event)">
                         </td>
                     </tr>
                     <tr>
@@ -102,8 +102,8 @@
                             <%--<input name="paisnac" id="paisnac" style="width:250px; height:35px" placeholder="Seleccione país" autofocus required class="form-control inputtext" list="paises" tabindex="8" onChange="requisitos(paisnac)">--%>
                             <select name="pSexo" required id="pSexo" class="form-control" onChange="requisitos(pSexo)">
                                     <option value="">Seleccione su sexo</option>
-                                    <option value="1">Mujer</option>
-                                    <option value="0">Hombre</option>
+                                    <option value="Mujer">Mujer</option>
+                                    <option value="Hombre">Hombre</option>
                                 </select>
                         </td>
                     </tr>

@@ -114,21 +114,20 @@ public String actualizarRol(rolusuarioDTO rol, Connection cnn) {
         try {
 
             int resultado = 0;
-            pstmt = cnn.prepareStatement("INSERT INTO personas VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? , ?)");
+            pstmt = cnn.prepareStatement("INSERT INTO personas VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             pstmt.setLong(1, newPersona.getIdPersona());
             pstmt.setString(2, newPersona.getCorreoElectronico());
             pstmt.setInt(3, newPersona.getIdCiudad());
             pstmt.setInt(4, newPersona.getIdNacionalidad());
             pstmt.setString(5, newPersona.getNombres());
             pstmt.setString(6, newPersona.getApellidos());
-            pstmt.setString(7, newPersona.getFechaNto());
-            pstmt.setInt(8, newPersona.getTelefono());
-            pstmt.setString(9, newPersona.getContraseña());
-            pstmt.setInt(10, newPersona.getIdestadousuarios());
-            pstmt.setString(11, newPersona.getObservaciones());
-            pstmt.setInt(12, newPersona.getSexo());
-            pstmt.setInt(13, newPersona.getActivarCorreo());
-           
+            pstmt.setString(7, newPersona.getFechaNto());          
+            pstmt.setString(8, newPersona.getContraseña());
+            pstmt.setInt(9, newPersona.getIdestadousuarios());
+            pstmt.setString(10, newPersona.getObservaciones());
+            pstmt.setString(11, newPersona.getSexo());
+            pstmt.setInt(12, newPersona.getTelefono());
+                      
             
             resultado = pstmt.executeUpdate();
 

@@ -15,15 +15,32 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <link rel="shortcut icon" href="imagenes/br.ico" />
         <title>Booking Routers</title>
         <link type="text/css" rel="stylesheet" href="css/css.css" />
-        <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist/bootstrap-3.2.0-dist/css/bootstrap.css">
-        <link rel="shortcut icon" href="imagenes/br.ico" />
-        <script src="scripts/bookclient.js" type="text/javascript">
-        </script>
-    </head>
-    <body>
-        <div class ="contenedor">
+        <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist/bootstrap-3.2.0-dist/css/bootstrap.css"> 
+        <script src="scripts/bookclient.js" type="text/javascript"></script>        
+        <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script src="scripts/reservas.js" type="text/javascript"></script>
+<script src="bootstrap-3.2.0-dist/bootstrap-3.2.0-dist/js/bootstrap.js"></script>
+<script>
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+</script>
+<style type="text/css">
+    span:hover{
+        cursor:pointer
+    } 
+    span.ayudas{       
+        position:relative;
+        left:450px;
+    }
+    
+</style> 
+</head>
+<body>
+<div class ="contenedor">
 <div class="banner"> 
 <p><a href="index1.jsp"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
 </div>
@@ -47,7 +64,7 @@
   <li><a href="Controlador?action=logout"><span class="glyphicon glyphicon-remove-sign"></span> Cerrar sesion</a></li> 
  </ul>
   </nav>
-                  
+</div>              
                     
       <%
                                     HttpSession misesion = request.getSession(false);
@@ -90,21 +107,25 @@
                                          <td><label for="cor" class="labele">Correo<font color="#ff0000"></label></td>
                                          <td><input name="cor" type="email" id="cor" value="<%=persona.getCorreoElectronico()%>" style="width:250px; height:25px" readonly="readonly"  autofocus required class="form-control inputtext"></td>
                               
-                                     <tr>
-                                         <td><label for="rol" class="labele">Rol<font color="#ff0000"></label></td>
+                                         <tr><td><span class="glyphicon glyphicon-question-sign ayudas" data-container="body"data-toggle="popover" data-placement="right"data-content="Para el cambio de roles: Debe digitar 1. Para administrador y  2. Para usuario."></span>
+                                         <label for="rol" class="labele">Rol<font color="#ff0000"></label></td>
                                          <td><input name="rol" type="text" id="rol" value="<%=persona.getRolus().getRolesIdRol()%>" style="width:250px; height:25px" autofocus required class="form-control inputtext"></td>
                                         </table> 
-                                       
-                                        <center>
-                                    
+                                       <br>
+                                        <center>                                    
                                       <input name="submit10" class="btn btn-success" type="submit" id="submit10" value="Guardar Cambios">
                                         </center>                                        
-                                                                           
-                                                                   
-                                                                                        
-                                                            
-                                     </form>
-        </div>
+                                        </form>
+                                        <br><br><br>
+                                <div style="width:100%; background: #0C4391; height: 30px; margin-top:10px; padding-top:5px; border-radius:3px;color:#e2c60f; margin-bottom:1%; float:left; text-align: center;height:70px;color:white;">
+                                <span>Booking Routers &copy; 2015</span><br>
+                                Integrantes :<span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Yilber Hernandez 
+                                <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
+                                <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Sergio Stiven Urbiba
+                                <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Andres Feipe Guerrero<br>
+                                <img src="imagenes/dddd.png"><a href="reserva1.jsp" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="reserva.jsp" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
+
+                            </div>
          <%
        }else{
        response.sendRedirect("index.jsp");

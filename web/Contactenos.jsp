@@ -11,26 +11,23 @@
 <link type="text/css" rel="stylesheet" href="css/styles/glDatePicker.default.css">
 <link type="text/css" rel="stylesheet" href="sweetalert-master/dist/sweetalert.css" />
 <script src="css/styles/glDatePicker.min.js" ></script>
-<script src="js/Funciones.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
 <script src="bootstrap-3.2.0-dist/bootstrap-3.2.0-dist/js/bootstrap.js"></script>
-<link type="text/css" rel="stylesheet" href="css/Contactenos.css" />
-<script type="text/javascript" src="engine1//jquery.js"></script>
-<style type="text/css">
-span:hover{
-        cursor:pointer
-    } 
-    span.ayuda{       
-        position:relative;
-        left:270px;
-        top:-20px;
-    }
-</style>
 <script>
 $(function () {
   $('[data-toggle="popover"]').popover()
 })
 </script>
+<style type="text/css">
+    span:hover{
+        cursor:pointer
+    } 
+    span.ayudas{       
+        position:relative;
+        top:-40px;
+      
+    }
+</style>
 </head>
 <body>
 <div class ="contenedor">
@@ -61,35 +58,36 @@ $(function () {
             <div style=" background: #DDDDDD;  text-align: center; border-radius: 15; padding-top: 5px; border-radius: 15px; " class="popo">
                         <a href="index.jsp" style="color:black; text-decoration: none;">Inicio</a>
                         <a href="registro.jsp" style="color: black; text-decoration: none;">Contactenos</a>
-                    </div>            
+                    </div>  
+    <br>
+    <div class="col2" style="border:#AB9C9D solid; border-radius:15px; box-shadow: 2px 3px 3px #332727"> 
             <form name="" action="contactenos" method="post" id="form1" class="contacto"> 
              <table width="744" align="center"><br>
                     <tr>
-                        <td><label for="emal" class="labele"><strong>Tu Email :<font color="#FF0000">*</strong></label></font></td>
+                        <td><label for="emal" class="labele"><strong>Tu Email<font color="#FF0000">*</strong></label></td>
                         <td><input name="emal" type="email" style="width:250px; height:30px" autofocus id="doc" placeholder="Correo" required class="form-control inputtext"  minlenght=8 tabindex="2"></td>    
                     </tr>
                     <tr>
-                        <td><label for="cCuerpo" class="labele"><strong>Mensaje<font color="#FF0000" >*</strong></label></font></td>
-                        <td><textarea rows="6" name="cCuerpo" tabindex="4"></textarea></td>    
+                        <td><label for="cCuerpo" class="labele"><strong>Mensaje<font color="#FF0000" >*</strong></label></td>
+                        <td><textarea rows="6" name="cCuerpo" tabindex="4"></textarea>
+                            <span class="glyphicon glyphicon-question-sign ayudas" data-container="body"data-toggle="popover"data-placement="right"data-content="Escriba cualquier inquietud, reclamo o sugerencia que desee."></span></td>    
                     </tr>
                     <tr>
                         <td><input type="submit" name="enviar"  id="enviar" class="btn btn-success"  value="Enviar" style="position:relative; left:280px" tabindex="5">
                  </tr>
-                  
+                 
              </table>
-            </form>
-     
-</center>
-<span class="glyphicon glyphicon-question-sign ayuda" data-container="body"data-toggle="popover"data-placement="bottom"data-content="Persona responsable de la reserva"></span>
+            </form> 
+    </div>
+</center> 
+<div style="width:100%; background: #0C4391; height: 30px; margin-top:10px; padding-top:5px; border-radius:3px;color:#e2c60f; margin-bottom:1%; float:left; text-align: center;height:70px;color:white;">
+                                <span>Booking Routers &copy; 2015</span><br>
+                                Integrantes :<span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Yilber Hernandez 
+                                <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
+                                <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Sergio Stiven Urbiba
+                                <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Andres Feipe Guerrero<br>
+                                <img src="imagenes/dddd.png"><a href="reserva1.jsp" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="reserva.jsp" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
 
-<div class="idioma1">
-        <span>Booking Routers &copy; 2015</span><br>
-        Integrantes :<span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Yilber Hernandez 
-        <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
-        <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Sergio Stiven Urbiba
-        <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Andres Feipe Guerrero<br>
-        <img src="imagenes/dddd.png"><a href="index1.html" style=" color: #ffffff; text-decoration: none;">English</a> --  <img src="imagenes/original.jpg"><a href="Index.html" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
-    
-</div> 
+                            </div>
 </body>
 </html>

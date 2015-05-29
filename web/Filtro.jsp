@@ -78,7 +78,7 @@
                 <strong>Ciudad</strong><font color="#FF0000">*</font>
                 <br>
             </td>
-            <td> <input type="tex" placeholder="Ejem Bogota" name="ciudad" class="form-control inputtext"/></td>
+            <td><input type="tex" placeholder="Ejem Bogota" name="ciudad" class="form-control inputtext"/></td>
         </tr>   
                     </table>
                    

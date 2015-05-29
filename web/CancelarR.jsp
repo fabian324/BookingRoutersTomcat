@@ -20,9 +20,8 @@
 <link type="text/css" rel="stylesheet" href="sweetalert-master/dist/sweetalert.css" />
 <script src="sweetalert-master/dist/sweetalert.min.js"></script>
 <script src="scripts/registro.js" type="text/javascript"></script>
-<script type="text/javascript">
-function confirmar(){
-    swal({   
+//function confirmar(){
+  <%--  swal({   
         title: "Are you sure?",   
         text: "You will not be able to recover this imaginary file!",   
         type: "warning",  
@@ -39,8 +38,8 @@ function confirmar(){
         else {    
             swal("Cancelled", "Your imaginary file is safe :)", "error");   } });
     };
-</script>
-<%--<style type="text/css">
+</script>--%>
+<style type="text/css">
     .info, .exito, .alerta, .error {
        font-family:Arial, Helvetica, sans-serif; 
        font-size:13px;
@@ -78,7 +77,17 @@ function confirmar(){
 $(document).ready(function(){
        setTimeout(function(){ $(".mensajes").fadeIn(800).fadeOut(800);}, 4000); 
 });
-</script>--%>
+</script>
+<script>
+  function confirmar()
+    {
+        if(confirm('Esta seguro que desea eliminar esta reserva?'))
+            return true;
+        
+        else
+            return  false;
+    }
+    </script>
 </head>
 <body>
 <div class ="contenedor">
@@ -111,7 +120,7 @@ $(document).ready(function(){
       misReservas = (ArrayList) facadeP.listarReservaPer(persona.getIdPersona());
 %> 
 <br>
- <%--<center>
+ <center>
                <table>
                    <tr>
                     <td colspan="2" style="text-align: center">
@@ -125,7 +134,7 @@ $(document).ready(function(){
                 </td>
                    </tr>
                </table>
-         </center>--%>
+         </center>
  <div class="ba">
  <h1>Cancelar Reservas</h1>
  </div>

@@ -13,9 +13,8 @@ public class personasDTO {
 
     @Override
     public String toString() {
-        return "personasDTO{" + "idPersona=" + idPersona + ", correoElectronico=" + correoElectronico + ", idCiudad=" + idCiudad + ", idNacionalidad=" + idNacionalidad + ", nombres=" + nombres + ", apellidos=" + apellidos + ", fechaNto=" + fechaNto + ", telefono=" + telefono + ", contrase\u00f1a=" + contraseña + ", idestadousuarios=" + idestadousuarios + ", observaciones=" + observaciones + ", ActivarCorreo=" + ActivarCorreo + ", Sexo=" + Sexo + ", ciu=" + ciu + ", nac=" + nac + ", roles=" + roles + ", rolus=" + rolus + '}';
+        return "personasDTO{" + "idPersona=" + idPersona + ", correoElectronico=" + correoElectronico + ", idCiudad=" + idCiudad + ", idNacionalidad=" + idNacionalidad + ", nombres=" + nombres + ", apellidos=" + apellidos + ", fechaNto=" + fechaNto + ", telefono=" + telefono + ", contrase\u00f1a=" + contraseña + ", idestadousuarios=" + idestadousuarios + ", observaciones=" + observaciones + ", Sexo=" + Sexo + ", ciu=" + ciu + ", nac=" + nac + ", roles=" + roles + ", rolus=" + rolus + '}';
     }
-
     private long idPersona;
     private String correoElectronico;
     private int idCiudad;
@@ -27,12 +26,124 @@ public class personasDTO {
     private String contraseña;
     private int idestadousuarios;
     private String observaciones;
-    private int ActivarCorreo = 0;
-    private int Sexo = 0;
+    private String Sexo;
     private ciudadesDTO ciu ;
     private nacionalidadesDTO nac; 
     private rolesDTO roles;
     private rolusuarioDTO rolus;
+   
+    
+    public long getIdPersona() {
+        return idPersona;
+    }
+
+    public void setIdPersona(long idPersona) {
+        this.idPersona = idPersona;
+    }
+
+    public String getCorreoElectronico() {
+        return correoElectronico;
+    }
+
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
+    }
+
+    public int getIdCiudad() {
+        return idCiudad;
+    }
+
+    public void setIdCiudad(int idCiudad) {
+        this.idCiudad = idCiudad;
+    }
+
+    public int getIdNacionalidad() {
+        return idNacionalidad;
+    }
+
+    public void setIdNacionalidad(int idNacionalidad) {
+        this.idNacionalidad = idNacionalidad;
+    }
+
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getFechaNto() {
+        return fechaNto;
+    }
+
+    public void setFechaNto(String fechaNto) {
+        this.fechaNto = fechaNto;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public int getIdestadousuarios() {
+        return idestadousuarios;
+    }
+
+    public void setIdestadousuarios(int idestadousuarios) {
+        this.idestadousuarios = idestadousuarios;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+
+    public String getSexo() {
+        return Sexo;
+    }
+
+    public void setSexo(String Sexo) {
+        this.Sexo = Sexo;
+    }
+
+    public ciudadesDTO getCiu() {
+        return ciu;
+    }
+
+    public void setCiu(ciudadesDTO ciu) {
+        this.ciu = ciu;
+    }
+
+    public nacionalidadesDTO getNac() {
+        return nac;
+    }
+
+    public void setNac(nacionalidadesDTO nac) {
+        this.nac = nac;
+    }
 
     public rolesDTO getRoles() {
         return roles;
@@ -49,196 +160,7 @@ public class personasDTO {
     public void setRolus(rolusuarioDTO rolus) {
         this.rolus = rolus;
     }
-   
-    
-    
-    public ciudadesDTO getCiu() {
-        return ciu;
-    }
 
-    public void setCiu(ciudadesDTO ciu) {
-        this.ciu = ciu;
-    }
-
-    public nacionalidadesDTO getNac() {
-        return nac;
-    }
-
-    public void setNac(nacionalidadesDTO nac) {
-        this.nac = nac;
-    }
   
-    
-    public int getSexo() {
-        return Sexo;
-    }
-
-    public void setSexo(int Sexo) {
-        this.Sexo = Sexo;
-    }
-    
-
-    public int getActivarCorreo() {
-        return ActivarCorreo;
-    }
-
-    public void setActivarCorreo(int ActivarCorreo) {
-        this.ActivarCorreo = ActivarCorreo;
-    }
-   
-    /**
-     * @return the idPersona
-     */
-    public long getIdPersona() {
-        return idPersona;
-    }
-
-    /**
-     * @param idPersona the idPersona to set
-     */
-    public void setIdPersona(long idPersona) {
-        this.idPersona = idPersona;
-    }
-
-    /**
-     * @return the correoElectronico
-     */
-    public String getCorreoElectronico() {
-        return correoElectronico;
-    }
-
-    /**
-     * @param correoElectronico the correoElectronico to set
-     */
-    public void setCorreoElectronico(String correoElectronico) {
-        this.correoElectronico = correoElectronico;
-    }
-
-    /**
-     * @return the idCiudad
-     */
-    public int getIdCiudad() {
-        return idCiudad;
-    }
-
-    /**
-     * @param idCiudad the idCiudad to set
-     */
-    public void setIdCiudad(int idCiudad) {
-        this.idCiudad = idCiudad;
-    }
-
-    /**
-     * @return the idNacionalidad
-     */
-    public int getIdNacionalidad() {
-        return idNacionalidad;
-    }
-
-    /**
-     * @param idNacionalidad the idNacionalidad to set
-     */
-    public void setIdNacionalidad(int idNacionalidad) {
-        this.idNacionalidad = idNacionalidad;
-    }
-
-    /**
-     * @return the nombres
-     */
-    public String getNombres() {
-        return nombres;
-    }
-
-    /**
-     * @param nombres the nombres to set
-     */
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
-    }
-
-    /**
-     * @return the apellidos
-     */
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    /**
-     * @param apellidos the apellidos to set
-     */
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    /**
-     * @return the fechaNto
-     */
-    public String getFechaNto() {
-        return fechaNto;
-    }
-
-    /**
-     * @param fechaNto the fechaNto to set
-     */
-    public void setFechaNto(String fechaNto) {
-        this.fechaNto = fechaNto;
-    }
-
-    /**
-     * @return the telefono
-     */
-    public int getTelefono() {
-        return telefono;
-    }
-
-    /**
-     * @param telefono the telefono to set
-     */
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
-
-    /**
-     * @return the contraseña
-     */
-    public String getContraseña() {
-        return contraseña;
-    }
-
-    /**
-     * @param contraseña the contraseña to set
-     */
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
-    }
-
-    /**
-     * @return the idestadousuarios
-     */
-    public int getIdestadousuarios() {
-        return idestadousuarios;
-    }
-
-    /**
-     * @param idestadousuarios the idestadousuarios to set
-     */
-    public void setIdestadousuarios(int idestadousuarios) {
-        this.idestadousuarios = idestadousuarios;
-    }
-
-    /**
-     * @return the observaciones
-     */
-    public String getObservaciones() {
-        return observaciones;
-    }
-
-    /**
-     * @param observaciones the observaciones to set
-     */
-    public void setObservaciones(String observaciones) {
-        this.observaciones = observaciones;
-    }
-
    
 }

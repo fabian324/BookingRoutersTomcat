@@ -7,6 +7,7 @@
 <link rel="shortcut icon" href="imagenes/br.ico" />
 <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist/bootstrap-3.2.0-dist/css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/css.css">
+<script src="scripts/registro.js" type="text/javascript"></script>
 <script  src="jquery/jquery.js"></script>
 <script src="jquery/jquery.validate.js"></script>
 <script src="jquery/additional-methods.js"></script>
@@ -106,15 +107,15 @@ $(document).ready(function(){
     <input type="hidden" id="idReserva" name="idReserva" value="<%=miReserva.getIdReserva()%>"</input>
      <tr>
     <td><label for="tel" class="labele">Telefono</label><br></td>
-    <td><input type="text" id="apellidoPer" name="tel" value="<%=miReserva.getTelefono()%>" style="width:250px; height:25px" class="form-control" required/></td>
+    <td><input type="text" id="apellidoPer" name="tel" value="<%=miReserva.getTelefono()%>" style="width:250px; height:25px" class="form-control" required onkeypress="return validNumber(event)"/></td>
           </tr>
           <tr>
     <td><label for="nombrePer" class="labele">Nombres</label><br></td>
-    <td><input type="text" id="nombrePer" name="nombrePer" value="<%=miReserva.getNombres() %>" style="width:250px; height:25px" class="form-control" required/></td>
+    <td><input type="text" id="nombrePer" name="nombrePer" value="<%=miReserva.getNombres() %>" style="width:250px; height:25px" class="form-control" required onkeypress="return validLetter(event)"/></td>
           </tr>
           <tr>
     <td><label for="apellidoPer" class="labele">Apellidos</label><br></td>
-    <td><input type="text" id="nombrePer" name="apellidoPer"  value="<%=miReserva.getApellidos()%>" style="width:250px; height:25px" class="form-control" required/></td>
+    <td><input type="text" id="nombrePer" name="apellidoPer"  value="<%=miReserva.getApellidos()%>" style="width:250px; height:25px" class="form-control" required  onkeypress="return validLetter(event)"/></td>
           </tr>
           <tr>
     <td><label for="fechNac" class="labele">Fecha de Nacimiento</label></td>
