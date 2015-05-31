@@ -57,15 +57,15 @@ $(document).ready(function(){
 
 
 </style>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="imagenes/br.ico" />
+<title>..::Booking Routers::..</title>
         <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist/bootstrap-3.2.0-dist/css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/css.css">
 	<script  src="jquery/jquery.js"></script>
         <script  src="scripts/Ajax.js"></script>
 	<script src="jquery/jquery.validate.js"></script>
 	<script src="jquery/additional-methods.js"></script>
-<meta charset="utf-8">
-<link rel="shortcut icon" href="img/br.ico" />
-<title>..::Booking Routers::..</title>
 </head>
 <body>
 <div class ="contenedor">
@@ -74,30 +74,23 @@ $(document).ready(function(){
 </div>
 <nav>
 <ul id="main">
-    <li><a href="index.jsp" style="text-decoration: none;">Inicio</a></li>
-       <li><a align="center" href="#" style="text-decoration: none;">Reservas</a>
-                            <ul class="submain">
-                                <li><a href="reserva.jsp" style="text-decoration: none;">Nueva Solicitud </a></li>
-                                <li><a href="mreserva.html" style="text-decoration: none;">Mis Reservas</a> </li>
-                                </ul>
-                        </li>
-        <li><a align="center" href="#" style="text-decoration: none;">Gestion de Rutas</a>
-                            <ul class="submain">
-                                <li><a href="CreaRuta.jsp?msj=" style="text-decoration: none;">Creación de Rutas</a></li>
-                                <li><a href="ModRuta.jsp?msj=" style="text-decoration: none;">Modificación de Rutas</a> </li>
-                                </ul>
-                        </li>
-                         <li><a align="center" href="#" style="text-decoration: none;">Mi Cuenta</a>
-                            <ul class="submain">
-                                <li><a href="actualizarDatos1.jsp" style="text-decoration: none;">Mis Datos</a></li>
-                                <li><a href="cambiarContraseña.jsp" style="text-decoration: none;">Cambiar Contraseña</a> </li>
-                            </ul>
-                              </li>
-                            <li><a href="Controlador?action=logout" style="text-decoration: none;">Cerrar sesion</a> </li> 
-                       
-      
+    <li><a href="verificarRegistro.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
+ 
+               <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-send"></span> Gestión Rutas</a>
+  <ul class="submain">
+  <li><a href="reservaRutas.jsp?msj=" style="text-decoration: none;">Creación de Ruta</a> </li>
+  </ul>
+  </div>  
+  </li> 
+                        <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-folder-open"></span>  Reportes</a></div></li> 
+                <ul class="submain">  
+                 <li><div align="center"><a href="Filtro.jsp" style="text-decoration: none;">Clientes</a></div></li>
+                 <li><div align="center"><a href="filtroConductores.jsp" style="text-decoration: none;">Conductores</a></div></li>
+                   <li><div align="center"><a href="EnvioCorreoMasivo.jsp" style="text-decoration: none;">Envio de correos masivos</a></div></li>
+                  
         </ul>
-
+            <li><a href="Controlador?action=logout" style="text-decoration: none;"><span class="glyphicon glyphicon-remove-sign"></span> Cerrar sesión</a> </li>
+ </ul>
 </nav>
 <br>
 
@@ -119,9 +112,9 @@ $(document).ready(function(){
 <div>
 <form name="Modificacion de Rutas"  action="ModRuta" method="post" >
     <div>
-    <div  style="background: #0C4391; height: 70px; margin-top: 10px; padding-top: 5px; border-radius: 15px; color: #e2c60f">
+    <div  style="background: #0C4391; height: 70px; margin-top: 10px; padding-top: 5px; border-radius: 15px; color: #fff">
             <h2>
-                <center>Modificar Rutas</center>
+                <center>Modificación Rutas</center>
             </h2>
         </div>
     

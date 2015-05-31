@@ -29,6 +29,7 @@ public class reserDTO {
     private int cupo;
     private int nromaletas;
     private String nrovuelo;
+    private personasDTO personasruta;
 
     @Override
     public String toString() {
@@ -146,6 +147,20 @@ public class reserDTO {
 
     public void setCupo(int cupo) {
         this.cupo = cupo;
+    }
+
+    /**
+     * @return the personasruta
+     */
+    public personasDTO getPersonasruta() {
+        return personasruta;
+    }
+
+    /**
+     * @param personasruta the personasruta to set
+     */
+    public void setPersonasruta(personasDTO personasruta) {
+        this.personasruta = personasruta;
     }
 
 }

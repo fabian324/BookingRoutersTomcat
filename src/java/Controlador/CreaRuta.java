@@ -42,24 +42,26 @@ public class CreaRuta extends HttpServlet {
          rutasDAO cRuta = new rutasDAO();
         rutasDTO objRuta = new rutasDTO();
         String msj = "";
+  
+        
 
         if (request.getParameter("Placa") != null) {
             objRuta.setPlacaVehiculo(request.getParameter("Placa"));
             if (!"0".equals(request.getParameter("Tipo"))) {
                 objRuta.setIdtipoVehiculo(Integer.parseInt(request.getParameter("Tipo")));
-                if (!"0".equals(request.getParameter("Cliente"))) {
-                    objRuta.setIdPersona(request.getParameter("Cliente"));
+                if (!"0".equals(request.getParameter("idPersona"))) {
+                    objRuta.setIdPersona(request.getParameter("idPersona"));
                     if (!"0".equals(request.getParameter("Conductor"))) {
                         objRuta.setIdConductor(request.getParameter("Conductor"));
-                        if (!"0".equals(request.getParameter("Reserva"))) {
+                        if (!"0".equals(request.getParameter("idReserva"))) {
 
-                            objRuta.setidReserva(Integer.parseInt(request.getParameter("Reserva")));
+                            objRuta.setidReserva(Integer.parseInt(request.getParameter("idReserva")));
                             objRuta.setIdEstadoRuta(1);
                             
                              personasDTO pdto = new personasDTO();
                 conductoresDTO cdto = new conductoresDTO();
                 cdto= facadeP.correoConductores(Integer.parseInt(objRuta.getIdConductor()));
-                pdto = facadeP.ListarUnaPersona(Long.parseLong(request.getParameter("Cliente")));
+                pdto = facadeP.ListarUnaPersona(Long.parseLong(request.getParameter("idPersona")));
                 String asunto = "Datos Conductor";
                  String cuerpomsj= "<!DOCTYPE html>";
         cuerpomsj += "<br>";
@@ -87,7 +89,8 @@ public class CreaRuta extends HttpServlet {
         cuerpomsj+= "</th>";
         cuerpomsj += "<th bgColor='#F0F3F6'>"+ cdto.getTelContacto();
         cuerpomsj += "</th>";
-        cuerpomsj+= "<th bgColor='#F0F3F6'>" +objRuta.getPlacaVehiculo();    cuerpomsj += "</th>";      
+        cuerpomsj+= "<th bgColor='#F0F3F6'>" +objRuta.getPlacaVehiculo();   
+        cuerpomsj += "</th>";      
         cuerpomsj+= "</tr>";
         cuerpomsj += "</table>";
                 //String cuerpomsj = "<html>\"<body>\"<img src=\"C:\\Users\\andres\\Desktop\\BookingFase5\\web\\imagenes\" alt=\"Booking Routers\" width=\"1360\" height=\"126\" title=\"Forget the rest, call the best\"  />\"</body>\"<html>" + "su conductor es (a)" +cdto.getConductores().getNombres()+" " + cdto.getConductores().getApellidos()+ " "+"su numero de telefono por alguna eventualidad es  " + cdto.getTelContacto();
@@ -96,14 +99,14 @@ public class CreaRuta extends HttpServlet {
 
                             int ru = facadeP.validarruta(Integer.parseInt(request.getParameter("Tipo")));
                             if (ru == 0) {
-                                HttpSession misesion = request.getSession(true);
-                            misesion.setAttribute("logueado", ru);
+                               // HttpSession misesion = request.getSession(true);
+                          //  misesion.setAttribute("logueado", ru);
                               msj = facadeP.crearRuta(objRuta);
-                                  response.sendRedirect ("CreaRuta.jsp?msj=" + msj);
+                                  response.sendRedirect ("reservaRutas.jsp?msj=" + msj);
                              
-                            } else if (ru == 1) {
-                                HttpSession misesion = request.getSession(true);
-                                misesion.setAttribute("logueado", ru);
+                            } else if (ru == 3) {
+                             //   HttpSession misesion = request.getSession(true);
+                             //   misesion.setAttribute("logueado", ru);
                                 response.sendRedirect("CreaRuta.jsp?no=");
 
                             }

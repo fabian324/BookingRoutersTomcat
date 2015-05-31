@@ -140,6 +140,46 @@ public class reserDAO {
         return salida;
 
     }
+    public List<reserDTO> listarreservaru (Connection cnn)throws SQLException {
+        ArrayList<reserDTO> listarreservaru = new ArrayList();
+        try {
+            String query = "  select r.idreserva,s.servicio, t.nombreEmpresaTransporte,r.idpersona, r.horaReserva,r.responsable, r.cupo,r.nromaletas,r.nrovuelo,r.fechaReserva,r.horaReserva,r.direccionDestino, concat(nombres ,'  ', apellidos ) as cliente\n" +
+" from reservas r inner join personas p on r.idpersona= p.idpersona  inner join servicios s on r.idServicio=s.idServicio inner join transportellegadas em \n" +
+" on em.idTransporteLlegada=r.idTransporteLlegada inner join empresatransportes t on t.idEmpresaTransporte=em.idEmpresaTransporte ";
+            pstmt = cnn.prepareStatement(query);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                personasDTO per = new personasDTO();
+;                 reserDTO Rdao = new reserDTO();
+                empresatransportesDTO t = new empresatransportesDTO();
+                serviciosDTO se =new serviciosDTO();
+                Rdao.setIdReserva(rs.getInt("idreserva"));
+                per.setNombres(rs.getString("cliente"));
+                Rdao.setPersonasruta(per);
+                Rdao.setIdpersona(rs.getInt("idpersona"));
+                se.setServicio(rs.getString("servicio"));               
+                t.setNombreEmpresaTransporte(rs.getString("nombreEmpresaTransporte"));   
+                Rdao.setHoraReserva(rs.getString("horaReserva"));
+                Rdao.setResponsable(rs.getString("responsable"));
+                Rdao.setCupo(rs.getInt("cupo"));
+                Rdao.setNromaletas(rs.getInt("nromaletas"));
+                Rdao.setNrovuelo(rs.getString("nrovuelo"));
+                Rdao.setFechaReserva(rs.getString("fechaReserva"));
+                Rdao.setHoraReserva(rs.getString("horaReserva"));
+                Rdao.setDireccionDestino(rs.getString("direccionDestino"));
+                Rdao.setSer(se);
+                Rdao.setEmpre(t);            
+                listarreservaru.add(Rdao);
+            }
+
+        } catch (SQLException slqE) {
+            System.out.println("Ocurrio un error" + slqE.getMessage());
+        } finally {
+
+        }
+        return  listarreservaru;
+    }
 
     public List<reserDTO> listarReservas(Connection cnn) throws SQLException {
         ArrayList<reserDTO> listarReservas = new ArrayList();

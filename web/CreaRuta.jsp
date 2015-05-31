@@ -69,34 +69,34 @@
             <div class="banner"> 
                 <p><a href="index.jsp"><img src="imagenes/Logo.png" alt="Booking Routers" width="100%" height="150" title="Forget the rest, call the best"  /></a></p>
             </div>
+        </div>
             <nav>
                 <ul id="main">
-                    <li><a href="index.jsp">Inicio</a></li>
+                    <li><a href="verificarRegistro.jsp"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
 
-                    <li><a align="center" href="#" style="text-decoration: none;">Gestion de Rutas</a>
-                        <ul class="submain">
-                            <li><a href="CreaRuta.jsp?msj=" style="text-decoration: none;">Creación de Rutas</a></li>
-                            <li><a href="ModRuta.jsp?msj=" style="text-decoration: none;">Modificación de Rutas</a> </li>
-                        </ul>
-                    </li>
-                    <li><a align="center" href="#" style="text-decoration: none;">Mi Cuenta</a>
-                        <ul class="submain">
-                            <li><a href="actualizarDatos1.jsp" style="text-decoration: none;">Mis Datos</a></li>
-                            <li><a href="cambiarContraseña.jsp" style="text-decoration: none;">Cambiar Contraseña</a> </li>   
-                        </ul>
-                        </li>
-                        <li><a href="Controlador?action=logout" style="text-decoration: none;">Cerrar sesion</a> </li>   
-                    </li>
-
+        <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-send"></span> Gestión Rutas</a>
+  <ul class="submain">
+  <li><a href="ModRuta.jsp?msj=" style="text-decoration: none;">Modificación de Rutas</a> </li>
+  </ul>
+  </div>  
+  </li> 
+                    
+                 <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-folder-open"></span> Reportes</a></div> 
+                <ul class="submain">  
+                 <li><div align="center"><a href="Filtro.jsp" style="text-decoration: none;">Clientes</a></div></li>
+                 <li><div align="center"><a href="filtroConductores.jsp" style="text-decoration: none;">Conductores</a></div></li>
+                   <li><div align="center"><a href="EnvioCorreoMasivo.jsp" style="text-decoration: none;">Envío de correos masivos</a></div></li>
                 </ul>
-
+                   </li>
+                <li><a href="Controlador?action=logout" style="text-decoration: none;"><span class="glyphicon glyphicon-remove-sign"></span> Cerrar sesión</a> </li>   
+                </ul>
             </nav>
             <br>
 
             <%
                 HttpSession misesion = request.getSession(false);
 
-                if (misesion.getAttribute("logueado") != null) {
+                if (misesion.getAttribute("logueado") != null) {   
                     personasDTO pdto = null;
                     personasDTO persona = null;
                     FacadePersonas facadeP = new FacadePersonas();
@@ -109,7 +109,7 @@
             %>
             <div>
                 <form name="CreaRuta"  action="CreaRuta" method="post" >   
-                    <div  style="background: #0C4391; height: 70px; margin-top: 10px; padding-top: 5px; border-radius: 15px; color: #e2c60f">
+                    <div  style="background: #0C4391; height: 70px; margin-top: 10px; padding-top: 5px; border-radius: 15px; color: #ffffff">
 
                         <h2>
                             <center>Creación de Rutas</center>
@@ -118,7 +118,7 @@
                     <center> 
                         <table id="Crea">
                             <div style=" background:#98A0A8;  text-align: center ; border-radius: 15; ">
-                                Inicio-> Creacion de Rutas
+                                Inicio-> Creación de Rutas
                             </div>
                             <tr>
                                 <td>
@@ -128,7 +128,56 @@
                                 </td>
                                 <td><input id="Placa" maxlength="6" name="Placa" type="text" style="width:250px; height:30px " autofocus  placeholder="Ingrese placa" required class="form-control inputtext"  /> </td>
                             </tr>
+                            <br>
                             <tr>
+                                <td>
+                                    <br>
+                                    <strong>Cliente </strong><font color="#FF0000">*</font>  
+                                    <br>
+                                </td>
+                                <td>
+                                    <input id="Cliente" value="<%=request.getParameter("nombrepersona")%>"  readonly="readonly"  name ="clientenombre" type="text" style="width:250px; height:30px " autofocus   required class="form-control inputtext" />
+                                    <input id="Cliente" value="<%=request.getParameter("idPersona")%>"  readonly="readonly"  name ="idPersona" type="hidden" style="width:250px; height:30px " autofocus   required class="form-control inputtext" />
+                                      
+                                
+                                </td>
+                            </tr>
+                            <tr>
+                                    <tr>
+                                <td>
+                                    <br>
+                                    <strong>Fecha Reserva</strong><font color="#FF0000">*</font>  
+                                    <br>
+                                </td>
+                                <td>
+                                    <input id="Cliente" only value="<%=request.getParameter("FechaReserva")%>" readonly="readonly"  name ="Cliente" type="text" style="width:250px; height:30px " autofocus   required class="form-control inputtext" />
+                                      
+                                
+                                </td>
+                            </tr>
+                                <td>
+                                    <br>
+                                    <strong>Hora Vuelo</strong><font color="#FF0000">*</font>  
+                                    <br>
+                                </td>
+                                <td>
+                                    <input id="Cliente" only value="<%=request.getParameter("HoraReserva")%>" readonly="readonly"  name ="Cliente" type="text" style="width:250px; height:30px " autofocus   required class="form-control inputtext" />
+                                      
+                                
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br>
+                                    <strong>Número de vuelo </strong><font color="#FF0000">*</font>  
+                                    <br>
+                                </td>
+                                <td>
+                                    <input id="Cliente" value="<%=request.getParameter("nrovuelo")%> "  readonly="readonly" name ="Cliente" type="text" style="width:250px; height:30px " autofocus   required class="form-control inputtext" >
+                                 
+                                </td>
+                            </tr>
+                                  <tr>
                                 <td>
                                     <br>
                                     <strong>Tipo Vehículo </strong><font color="#FF0000">*</font> 
@@ -140,20 +189,11 @@
                                     </select>
                                 </td>
                             </tr>
-                            <br>
-                            <tr>
-                                <td>
-                                    <br>
-                                    <strong>Cliente </strong><font color="#FF0000">*</font>  
-                                    <br>
-                                </td>
-                                <td>
-                                    <select id="Cliente" name ="Cliente" type="text" style="width:250px; height:30px " autofocus   required class="form-control inputtext" >
-                                        <%=facadeP.getHTMLAll("0")%>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
+                                     <strong>Nro de Acompañantes </strong><font color="#FF0000">*</font>  
+                                     <input id="Cliente" value="<%=request.getParameter("cupo")%>" readonly="readonly" name ="Cliente" type="text" style="width:35px; height:30px " autofocus   required class="form-control inputtext" >
+                                      <strong>Nro de Maletas </strong><font color="#FF0000">*</font>  
+                                     <input id="Cliente" value="<%=request.getParameter("nromaletas")%>" readonly="readonly"  name ="Cliente" type="text" style="width:35px; height:30px " autofocus   required class="form-control inputtext" >
+                               
                             <br>
                             <td>
                                 <br>
@@ -173,27 +213,18 @@
                                     <br>
                                 </td>
                                 <td> 
-                                    <select id="Reserva" name="Reserva" type="text" style="width:250px; height:30px " autofocus  required class="form-control inputtext" >
-                                        <%=facadeP.reservaPorRuta("0")%>
-                                    </select>
+                                    
+                                    <input id="Reserva" name="Reserva" value="<%=request.getParameter("nombreservicio")%>" type="text" style="width:250px; height:30px " autofocus  required class="form-control inputtext" />
+                                  
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
+                                    <input type="hidden" name="idReserva" value="<%=request.getParameter("idReserva")%>"/>
                                     <input class="btn btn-success " name="btnCrea" type="submit" value="Crear Ruta" /> 
                                 </td>
                             </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <% if (request.getParameter("msj") != null) {%>
-                                    <% if (!request.getParameter("msj").equals("")) {%> 
-                                    <div class="exito mensajes" role="alert">
-                                        <%= request.getParameter("msj")%>
-                                    </div>
-                                    <% }%>   
-                                    <% }%> 
-                                </td>
-                            </tr>
+                
                         </table>
                         <br>
                         <table>
@@ -214,6 +245,14 @@
                         </table>
                         <br>
                     </center> 
+                                     <%
+                }else {
+                misesion.removeAttribute("logueado");
+                misesion.invalidate();
+                response.sendRedirect("index.jsp?msg= Sesion cerrada");
+            }
+            %>
+           
                 </form>
             </div>
             <div style="width:100%; background: #0C4391; height: 30px; margin-top:10px; padding-top:5px; border-radius:3px;color:#e2c60f; margin-bottom:1%; float:left; text-align: center;height:70px;color:white;">
@@ -226,19 +265,6 @@
 
             </div>
              
-
-
-
-            <%
-                }else {
-                misesion.removeAttribute("logueado");
-                misesion.invalidate();
-                response.sendRedirect("index.jsp");
-            }
-            %>
-
-
-
 
     </body>
 </html>

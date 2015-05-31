@@ -422,7 +422,26 @@ public int contarRegistros(Connection cnn){
         }
         return registros;
     }
-
+public int contarReservas(Connection cnn){
+        int registros = 0;
+        try{
+            pstmt=cnn.prepareStatement("SELECT * FROM reservas where idReserva= ?");
+            
+            rs = pstmt.executeQuery();
+            
+            if (rs!=null) {
+                while(rs.next()){
+                registros++;
+            }
+            return registros;
+            }
+              
+            
+        }catch(SQLException sqle){
+            msgSalida = sqle.getMessage();
+        }
+        return registros;
+    }
 public String EnviarCorreo(String correo, Connection cnn) {
         String clave = "";
         try {
@@ -683,7 +702,7 @@ public List<listarPerDTO> Paginacion2(int pg , int limited, Connection cnn) thro
               cond.setConductores(per);
                }
         } catch (SQLException slqE) {
-            System.out.println("Ocurrio un error" + slqE.getMessage());
+            System.out.println("Ocurrio un error aqui" + slqE.getMessage());
         } finally {
 
         }

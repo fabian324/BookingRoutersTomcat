@@ -76,7 +76,8 @@ public String crearRuta(rutasDTO newRuta, Connection cnn)throws SQLException{
             pstmt.setString(2, newRuta.getPlacaVehiculo());
             pstmt.setInt(3, newRuta.getIdtipoVehiculo());
             pstmt.setInt(4, newRuta.getIdEstadoRuta());
-            pstmt.setString(5, newRuta.getIdPersona());
+            int idpersona=Integer.parseInt(newRuta.getIdPersona());
+            pstmt.setInt(5, idpersona);
             pstmt.setString(6, newRuta.getIdConductor());
             pstmt.setInt(7, newRuta.getidReserva());
             resultado = pstmt.executeUpdate();

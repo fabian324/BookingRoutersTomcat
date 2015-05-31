@@ -48,7 +48,7 @@ $(function () {
   <ul id="main">
   <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-send"></span> Gestion Rutas</a>
   <ul class="submain">
-  <li><a href="CreaRuta.jsp?msj=" style="text-decoration: none;">Creación de Rutas</a></li>
+  <li><a href="reservaRutas.jsp?msj=" style="text-decoration: none;">Creación de Rutas</a></li>
   <li><a href="ModRuta.jsp?msj=" style="text-decoration: none;">Modificación de Rutas</a> </li>
   </ul>
   </div>  

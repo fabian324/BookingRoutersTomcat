@@ -100,9 +100,9 @@ $(document).ready(function(){
 </div>
 <nav>
   <ul id="main">
-  <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-send"></span> Gestion Rutas</a>
+  <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-send"></span> Gestión Rutas</a>
   <ul class="submain">
-  <li><a href="CreaRuta.jsp?msj=" style="text-decoration: none;">Creación de Rutas</a></li>
+  <li><a href="reservaRutas.jsp?msj=" style="text-decoration: none;">Creación de Rutas</a></li>
   <li><a href="ModRuta.jsp?msj=" style="text-decoration: none;">Modificación de Rutas</a> </li>
   </ul>
   </div>  
@@ -111,11 +111,11 @@ $(document).ready(function(){
   <ul class="submain">  
   <li><div align="center"><a href="Filtro.jsp" style="text-decoration: none;">Clientes</a></div></li>
   <li><div align="center"><a href="filtroConductores.jsp" style="text-decoration: none;">Conductores</a></div></li>
-  <li><div align="center"><a href="EnvioCorreoMasivo.jsp" style="text-decoration: none;">Envio de correos masivos</a></div></li>
+  <li><div align="center"><a href="EnvioCorreoMasivo.jsp" style="text-decoration: none;">Envío de correos masivos</a></div></li>
 
   </ul>
 </li>
-  <li><a href="Controlador?action=logout"><span class="glyphicon glyphicon-remove-sign"></span> Cerrar sesion</a></li> 
+  <li><a href="Controlador?action=logout"><span class="glyphicon glyphicon-remove-sign"></span> Cerrar sesión</a></li> 
  </ul>
   </nav>
 <center>
@@ -154,7 +154,7 @@ $(document).ready(function(){
                     <img id="foto" src="imagenes/user.jpg">
                 </div>
                 <div class="nombre">
-                    <td><input type="text" value="ADMISTRADOR" style="width:166px; height:25px; text-align:center; text-transform:uppercase;"  autofocus disabled  class="form-control inputtext">
+                    <td><input type="text" value="ADMINISTRADOR" style="width:166px; height:25px; text-align:center; text-transform:uppercase;"  autofocus disabled  class="form-control inputtext">
                     </td>
                 </div>
             </div>

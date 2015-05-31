@@ -74,6 +74,7 @@ public class FacadePersonas {
     public personareservaDTO ListarUnaReservaAcompanante(int idreservaPorPersona) throws SQLException{
         return pereser.ListarUnaReservaAcompanante(idreservaPorPersona, cnn);
     }
+    
     public String actualizarReservaAcompañante(personareservaDTO resert){
         return pereser.actualizarReservaAcompañante(resert, cnn);
     }
@@ -116,6 +117,9 @@ public class FacadePersonas {
 
     public int contarRegistros() {
         return pers.contarRegistros(cnn);
+    }
+    public int contarReservas(){
+    return pers.contarReservas(cnn);
     }
 
     public LinkedList ListarCiudades(int Nacionalidad) {
@@ -205,7 +209,9 @@ public class FacadePersonas {
     public List listarReservaPer(Long id) throws SQLException {
         return reser.listarReservaPer(id, cnn);
     }
-
+ public List  listarreservaru () throws SQLException {
+     return reser.listarreservaru(cnn);
+    }
     public String actualizarRegistro(personasDTO perss) {
         return pers.actualizarRegistro(perss, cnn);
     }
