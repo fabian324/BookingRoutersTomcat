@@ -209,12 +209,12 @@
                             <tr>
                                 <td> 
                                     <br>
-                                    <strong>Reserva </strong><font color="#FF0000">*</font> 
+                                    <strong>Servicio </strong><font color="#FF0000">*</font> 
                                     <br>
                                 </td>
                                 <td> 
                                     
-                                    <input id="Reserva" name="Reserva" value="<%=request.getParameter("nombreservicio")%>" type="text" style="width:250px; height:30px " autofocus  required class="form-control inputtext" />
+                                    <input id="Reserva" name="Reserva" value="<%=request.getParameter("nombreservicio")%>" readonly="readonly" type="text" style="width:250px; height:30px " autofocus  required class="form-control inputtext" />
                                   
                                 </td>
                             </tr>

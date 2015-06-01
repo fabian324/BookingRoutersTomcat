@@ -70,7 +70,7 @@ $(document).ready(function(){
 <body>
 <div class ="contenedor">
 <div class="banner"> 
-    <p><a href="index.jsp"><img src="imagenes/Logo.png" alt="Booking Routers" width="100%" height="150px" title="Forget the rest, call the best"/></a></p>
+<p><a href="index.jsp"><img src="imagenes/Logo.png" alt="Booking Routers" width="100%" height="150px" title="Forget the rest, call the best"/></a></p>
 </div>
 <nav>
 <ul id="main">
@@ -82,13 +82,14 @@ $(document).ready(function(){
   </ul>
   </div>  
   </li> 
-                        <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-folder-open"></span>  Reportes</a></div></li> 
+                <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-folder-open"></span>  Reportes</a></div>
                 <ul class="submain">  
                  <li><div align="center"><a href="Filtro.jsp" style="text-decoration: none;">Clientes</a></div></li>
                  <li><div align="center"><a href="filtroConductores.jsp" style="text-decoration: none;">Conductores</a></div></li>
-                   <li><div align="center"><a href="EnvioCorreoMasivo.jsp" style="text-decoration: none;">Envio de correos masivos</a></div></li>
+                 <li><div align="center"><a href="EnvioCorreoMasivo.jsp" style="text-decoration: none;">Envio de correos masivos</a></div></li>
                   
         </ul>
+                </li>
             <li><a href="Controlador?action=logout" style="text-decoration: none;"><span class="glyphicon glyphicon-remove-sign"></span> Cerrar sesión</a> </li>
  </ul>
 </nav>
@@ -113,11 +114,8 @@ $(document).ready(function(){
 <form name="Modificacion de Rutas"  action="ModRuta" method="post" >
     <div>
     <div  style="background: #0C4391; height: 70px; margin-top: 10px; padding-top: 5px; border-radius: 15px; color: #fff">
-            <h2>
-                <center>Modificación Rutas</center>
-            </h2>
-        </div>
-    
+            <center><h2>Modificación Rutas </h2></center>           
+        </div>    
     <center>
     <table>
      
@@ -145,10 +143,7 @@ $(document).ready(function(){
 </div>
 <%
  }
-%>  
-        </td>
-    </tr>
-        
+%>          
      <br>     
     </center>
 </div>  

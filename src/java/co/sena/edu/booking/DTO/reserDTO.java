@@ -13,6 +13,11 @@ package co.sena.edu.booking.DTO;
  */
 public class reserDTO {
 
+    @Override
+    public String toString() {
+        return "reserDTO{" + "idReserva=" + idReserva + ", idEstadoReserva=" + idEstadoReserva + ", idServicio=" + idServicio + ", idTransporteLlegada=" + idTransporteLlegada + ", responsable=" + responsable + ", fechaReserva=" + fechaReserva + ", horaReserva=" + horaReserva + ", direccionDestino=" + direccionDestino + ", idpersona=" + idpersona + ", ser=" + ser + ", empre=" + empre + ", cupo=" + cupo + ", nromaletas=" + nromaletas + ", nrovuelo=" + nrovuelo + ", personasruta=" + personasruta + ", paisorigen=" + paisorigen + '}';
+    }
+
  
     
     private int idReserva;
@@ -30,11 +35,15 @@ public class reserDTO {
     private int nromaletas;
     private String nrovuelo;
     private personasDTO personasruta;
+    private String paisorigen;
 
-    @Override
-    public String toString() {
-        return "reserDTO{" + "idReserva=" + idReserva + ", idEstadoReserva=" + idEstadoReserva + ", idServicio=" + idServicio + ", idTransporteLlegada=" + idTransporteLlegada + ", responsable=" + responsable + ", fechaReserva=" + fechaReserva + ", horaReserva=" + horaReserva + ", direccionDestino=" + direccionDestino + ", idpersona=" + idpersona + ", ser=" + ser + ", empre=" + empre + ", cupo=" + cupo + ", nromaletas=" + nromaletas + ", nrovuelo=" + nrovuelo + '}';
+    public String getPaisorigen() {
+        return paisorigen;
     }
+
+    public void setPaisorigen(String paisorigen) {
+        this.paisorigen = paisorigen;
+    }  
 
     public String getNrovuelo() {
         return nrovuelo;

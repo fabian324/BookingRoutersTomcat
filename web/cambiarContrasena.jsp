@@ -53,10 +53,10 @@
                                         </div>                                 
                                         <center>                                   
                                                 <label for="con" class="labele"><strong>Contraseña<font color="#FF0000">*</font></strong></label>
-                                                <input name="con" type="password" id="con" value="<%=persona.getContraseña()%>" style="width:250px; height:25px" tabindex="17" autofocus required class="form-control inputtext">
+                                                <input name="con" type="password" id="con" value="<%=persona.getContrasena()%>" style="width:250px; height:25px" tabindex="17" autofocus required class="form-control inputtext">
                                                 <br>
                                                 <label for="con" class="labele"><strong>Confirmar<font color="#FF0000">*</font></strong></label>
-                                                <input name="vcon" type="password" id="vcon" value="<%=persona.getContraseña()%>" style="width:250px; height:25px" tabindex="18" autofocus required class="form-control inputtext">
+                                                <input name="vcon" type="password" id="vcon" value="<%=persona.getContrasena()%>" style="width:250px; height:25px" tabindex="18" autofocus required class="form-control inputtext">
                                                 <br>
                                                 <br>
                                                 <input name="submit11" class="btn btn-success" type="button" id="ccon" tabindex="19" onClick="contrase()" value="Validar contraseña"style="position:relative; left:30px">

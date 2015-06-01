@@ -13,26 +13,9 @@ public class personasDTO {
 
     @Override
     public String toString() {
-        return "personasDTO{" + "idPersona=" + idPersona + ", correoElectronico=" + correoElectronico + ", idCiudad=" + idCiudad + ", idNacionalidad=" + idNacionalidad + ", nombres=" + nombres + ", apellidos=" + apellidos + ", fechaNto=" + fechaNto + ", telefono=" + telefono + ", contrase\u00f1a=" + contraseña + ", idestadousuarios=" + idestadousuarios + ", observaciones=" + observaciones + ", Sexo=" + Sexo + ", ciu=" + ciu + ", nac=" + nac + ", roles=" + roles + ", rolus=" + rolus + '}';
+        return "personasDTO{" + "idPersona=" + idPersona + ", correoElectronico=" + correoElectronico + ", idCiudad=" + idCiudad + ", idNacionalidad=" + idNacionalidad + ", nombres=" + nombres + ", apellidos=" + apellidos + ", fechaNto=" + fechaNto + ", telefono=" + telefono + ", contrasena=" + contrasena + ", idestadousuarios=" + idestadousuarios + ", observaciones=" + observaciones + ", Sexo=" + Sexo + ", ciu=" + ciu + ", nac=" + nac + ", roles=" + roles + ", rolus=" + rolus + '}';
     }
-    private long idPersona;
-    private String correoElectronico;
-    private int idCiudad;
-    private int idNacionalidad;
-    private String nombres;
-    private String apellidos;
-    private String fechaNto;
-    private int telefono;
-    private String contraseña;
-    private int idestadousuarios;
-    private String observaciones;
-    private String Sexo;
-    private ciudadesDTO ciu ;
-    private nacionalidadesDTO nac; 
-    private rolesDTO roles;
-    private rolusuarioDTO rolus;
-   
-    
+
     public long getIdPersona() {
         return idPersona;
     }
@@ -97,12 +80,12 @@ public class personasDTO {
         this.telefono = telefono;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public int getIdestadousuarios() {
@@ -161,6 +144,22 @@ public class personasDTO {
         this.rolus = rolus;
     }
 
-  
-   
-}
+    private long idPersona;
+    private String correoElectronico;
+    private int idCiudad;
+    private int idNacionalidad;
+    private String nombres;
+    private String apellidos;
+    private String fechaNto;
+    private int telefono;
+    private String contrasena;
+    private int idestadousuarios;
+    private String observaciones;
+    private String Sexo;
+    private ciudadesDTO ciu ;
+    private nacionalidadesDTO nac; 
+    private rolesDTO roles;
+    private rolusuarioDTO rolus;
+
+    
+   }

@@ -47,7 +47,7 @@
 </nav><br><br>
         <form method="get" action="GestionCorreos">                
                     <div class="col-md-4">
-                        <h1>Envió Correos másivos</h1>
+                        <h1>Envió Correos masivos</h1>
                         <div class="form-group">
                             <label for="cAsunto">Asunto:</label>
                             <input type="text" name="cAsunto" id="cAsunto" 

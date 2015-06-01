@@ -77,7 +77,7 @@ $(document).ready(function(){
 
 <br>
 <label for="con" class="labele"><strong>Contraseña<font color="#FF0000">*</strong></label></font>
-<input name="contraseña" type="password" style="width:250px; height:25px " required id="con" placeholder="*******" required class="form-control inputtext"  minlenght=3>
+<input name="contrasena" type="password" style="width:250px; height:25px " required id="con" placeholder="*******" required class="form-control inputtext"  minlenght=3>
 <br>
 <input name="submit10" class="btn btn-success"  type="submit" id="submit10" onClick= "rol()" value="Ingresar">
 </form>

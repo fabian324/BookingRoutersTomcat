@@ -70,6 +70,13 @@ $(document).ready(function(){
   </ul>
   </div>  
   </li> 
+  <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-folder-open"></span> Reportes</a></div> 
+  <ul class="submain">  
+  <li><div align="center"><a href="Filtro.jsp" style="text-decoration: none;">Clientes</a></div></li>
+  <li><div align="center"><a href="filtroConductores.jsp" style="text-decoration: none;">Conductores</a></div></li>
+  <li><div align="center"><a href="EnvioCorreoMasivo.jsp" style="text-decoration: none;">Envío de correos masivos</a></div></li>
+</ul>
+</li>
   <li><a href="Controlador?action=logout"><span class="glyphicon glyphicon-remove-sign"></span> Cerrar sesion</a></li>
 </ul>
   </nav>  

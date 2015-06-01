@@ -145,11 +145,7 @@ $(document).ready(function(){
  <br>     
 <div class="contenedor">
             <div class="lateral">
-                <h4>Bienvenido</h4>
-                <div class="nombre">
-                    <td><input type="text" value="<%%>" style="width:166px; height:25px; text-align:center; text-transform:uppercase; left:30px;"  autofocus disabled  class="form-control inputtext">
-                    </td>
-                </div>
+                <h4>Bienvenido</h4>               
                 <div class="foto">
                     <img id="foto" src="imagenes/user.jpg">
                 </div>

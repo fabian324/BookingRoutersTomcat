@@ -54,7 +54,7 @@ FacadePersonas facadeP = new FacadePersonas();
                                 
                             msj = facadeP.actualizarRegistro(objRuta);
                               response.sendRedirect("ModRuta.jsp?msj=" + msj);
-                            } else if (ru == 1) {
+                            } else if (ru == 3) {
                                 
                                 response.sendRedirect("ModRuta.jsp?no=");
                          }

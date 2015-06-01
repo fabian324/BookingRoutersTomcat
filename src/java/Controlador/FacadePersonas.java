@@ -68,8 +68,8 @@ public class FacadePersonas {
     public synchronized int getRol(personasDTO idPersona) throws SQLException{
         return pers.getRol(idPersona, cnn);
     }
-    public long login(String contraseña, long idPersona) throws SQLException{
-        return pers.login(contraseña, idPersona, cnn);
+    public long login(String contrasena, long idPersona) throws SQLException{
+        return pers.login(contrasena, idPersona, cnn);
     }
     public personareservaDTO ListarUnaReservaAcompanante(int idreservaPorPersona) throws SQLException{
         return pereser.ListarUnaReservaAcompanante(idreservaPorPersona, cnn);
@@ -166,8 +166,8 @@ public class FacadePersonas {
         return reser.ListarUnaReserva(idReserva, cnn);
     }
 
-    public String actualizarContraseña(personasDTO personas) {
-        return pers.actualizarContraseña(personas, cnn);
+    public String actualizarContrasena(personasDTO personas) {
+        return pers.actualizarContrasena(personas, cnn);
     }
 
     public List contarPersonas(String nacionalidad, String nombres) {
@@ -216,8 +216,8 @@ public class FacadePersonas {
         return pers.actualizarRegistro(perss, cnn);
     }
 
-    public String ActualizarContraseña(personasDTO perss) {
-        return pers.actualizarContraseña(perss, cnn);
+    public String ActualizarContrasena(personasDTO perss) {
+        return pers.actualizarContrasena(perss, cnn);
     }
 
     public long isAcountExists(String contraseña, long idPersona) throws SQLException {

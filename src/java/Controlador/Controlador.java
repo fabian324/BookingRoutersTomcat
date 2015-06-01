@@ -52,7 +52,7 @@ FacadePersonas facadeP = new FacadePersonas();
             pdto.setIdCiudad(Integer.parseInt(request.getParameter("ciunac")));
             pdto.setSexo(request.getParameter("pSexo"));
             pdto.setTelefono(Integer.parseInt(request.getParameter("tel")));
-            pdto.setContraseña(request.getParameter("con"));
+            pdto.setContrasena(request.getParameter("con"));
             pdto.setIdestadousuarios(1);
             pdto.setObservaciones("Ninguna");
 
@@ -92,7 +92,7 @@ FacadePersonas facadeP = new FacadePersonas();
             cuerpomsj += "</th>";
             cuerpomsj += "<th bgColor='white' style=\"color: black; \">" + pdto.getIdPersona();
             cuerpomsj += "</th>";
-            cuerpomsj += "<th bgColor='white' style=\"color: black; \">" + pdto.getContraseña();
+            cuerpomsj += "<th bgColor='white' style=\"color: black; \">" + pdto.getContrasena();
             cuerpomsj += "</th>";
             cuerpomsj += "<th bgColor='white' style=\"color: black;\">" + pdto.getCorreoElectronico();
             cuerpomsj += "</th>";

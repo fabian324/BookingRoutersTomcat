@@ -38,11 +38,11 @@ FacadePersonas facadeP = new FacadePersonas();
         response.setContentType("text/html;charset=UTF-8");
        if (request.getParameter("submit10") != null) {
                 long idPersona =(Integer.parseInt(request.getParameter("idPersona").trim()));
-                String contraseña = request.getParameter("contraseña").trim();
+                String contrasena = request.getParameter("contrasena").trim();
                 FacadePersonas facadeP = new FacadePersonas();
                 personasDTO datosUsuario = null;
                 
-                long cc = facadeP.login(contraseña, idPersona);
+                long cc = facadeP.login(contrasena, idPersona);
                 if (cc != 0) {
                     //datosUsuario =  new personasDTO();
                     datosUsuario = facadeP.ListarUnaPersona(cc);

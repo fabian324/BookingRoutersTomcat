@@ -78,21 +78,20 @@
                 <strong>Ciudad</strong><font color="#FF0000">*</font>
                 <br>
             </td>
-            <td><input type="tex" placeholder="Ejem Bogota" name="ciudad" class="form-control inputtext"/></td>
+            <td><input type="tex" placeholder="Ejem Bogota" name="ciudad" class="form-control inputtext"></td>
         </tr>   
                     </table>
                    
-        <input type="submit" name="buscar" value="Buscar" class="btn btn-success">
-                   <input type="submit"name="generar"value="Generar Reporte"class="btn btn-success">
-               <br><br mofos>
+        <input type="submit" name="buscar" value="Buscar" class="btn btn-success" style="position:relative; left:-40px;">
+                   <input type="submit" name="generar" value="Generar Reporte Excel" class="btn btn-success" style="position:relative; left:-40px;">
+               <br>
                 </form>
                 <form action="exportarPDF.jsp" method="post">
-                    <input type="submit" name="generar" value="Generar Reporte PDF" class="btn btn-success">
+                    <input type="submit" name="generar" value="Generar Reporte PDF" class="btn btn-success" style="position:relative; left:170px; top:-34px">
                 </form>
 
             </center>
-        
-            
+
             <%
 
                 HttpSession miSession = request.getSession(false);

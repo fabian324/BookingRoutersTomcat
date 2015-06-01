@@ -39,9 +39,9 @@ FacadePersonas facadeP = new FacadePersonas();
             personasDAO pdao = new personasDAO();
             
             pdto.setIdPersona(Long.parseLong(request.getParameter("id")));
-            pdto.setContraseña(request.getParameter("con"));
+            pdto.setContrasena(request.getParameter("con"));
             
-            String mensaje = facadeP.actualizarContraseña(pdto);
+            String mensaje = facadeP.actualizarContrasena(pdto);
             response.sendRedirect("menuCliente.jsp?msgSalida="+mensaje);
         }
     }

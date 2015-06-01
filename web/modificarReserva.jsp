@@ -37,7 +37,7 @@
                 <li><a align="center" href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-plane"></span> Reservas</a>
                     <ul class="submain">
                         <li><a href="reserva.jsp" style="text-decoration: none;">Solicitar Reservas </a></li>
-                        <li><a href="#" style="text-decoration: none;">Modificar Reserva</a> </li>
+                        <li><a href="ModificarReservas.jsp" style="text-decoration: none;">Modificar Reserva</a> </li>
                         <li><a href="CancelarR.jsp" style="text-decoration: none;">Cancelar Reserva</a></li>
                     </ul>
                 </li>                       
@@ -152,7 +152,7 @@
     <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
     <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Sergio Stiven Urbiba
     <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Andres Feipe Guerrero<br>
-    <img src="imagenes/dddd.png"><a href="modificarReserva1.jsp" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="cambiarContraseña.jsp"><a href="modificarReserva.jsp" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
+    <img src="imagenes/dddd.png"><a href="modificarReserva1.jsp" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="modificarReserva.jsp" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
 
 </div>
 </body>

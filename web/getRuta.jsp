@@ -58,7 +58,7 @@
                 <br>
             </td>
             <td> 
-                <select id="Tipo" name="Tipo" type="text" style="width:250px; height:30px " autofocus  placeholder="usuario" required class="form-control inputtext"  >
+                <select id="Tipo" name="Tipo" type="text" style="width:250px; height:30px" autofocus  placeholder="usuario" required class="form-control inputtext">
                     <%= 
                         facadeP.seleccionTipoV(Integer.toString( ruDTO.getIdtipoVehiculo()))
                     %>
@@ -98,11 +98,11 @@
         <tr>
             <td> 
                  <br>
-               <strong>Reserva </strong><font color="#FF0000">*</font> 
+               <strong>Servicio </strong><font color="#FF0000">*</font> 
                 <br>
             </td>
                 <td> 
-                <select id="Reserva" name="Reserva" type="text" style="width:250px; height:30px " autofocus  placeholder="usuario" required class="form-control inputtext" >
+                <select id="Reserva" name="Reserva" type="text" style="width:250px; height:30px " readonly="readonly" autofocus  placeholder="usuario" required class="form-control inputtext" >
                     <%= 
                        facadeP.reservaPorRuta(Integer.toString( ruDTO.getidReserva()))
                     %>

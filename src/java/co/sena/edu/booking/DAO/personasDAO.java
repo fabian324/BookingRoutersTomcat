@@ -122,7 +122,7 @@ public String actualizarRol(rolusuarioDTO rol, Connection cnn) {
             pstmt.setString(5, newPersona.getNombres());
             pstmt.setString(6, newPersona.getApellidos());
             pstmt.setString(7, newPersona.getFechaNto());          
-            pstmt.setString(8, newPersona.getContraseña());
+            pstmt.setString(8, newPersona.getContrasena());
             pstmt.setInt(9, newPersona.getIdestadousuarios());
             pstmt.setString(10, newPersona.getObservaciones());
             pstmt.setString(11, newPersona.getSexo());
@@ -156,7 +156,7 @@ public String actualizarRol(rolusuarioDTO rol, Connection cnn) {
         LinkedList<personasDTO> listaPersonas = new LinkedList<personasDTO>();
         try {
 
-            String query = "SELECT  idPersona, correoElectronico, idCiudad, idNacionalidad, nombres, apellidos, fechaNto, telefono, contraseña, idestadousuarios, observaciones "
+            String query = "SELECT  idPersona, correoElectronico, idCiudad, idNacionalidad, nombres, apellidos, fechaNto, telefono, contrasena, idestadousuarios, observaciones "
                     + " FROM personas ";
             pstmt = cnn.prepareStatement(query);
             rs = pstmt.executeQuery();
@@ -171,7 +171,7 @@ public String actualizarRol(rolusuarioDTO rol, Connection cnn) {
                 newPersona.setApellidos(rs.getString("apellidos"));
                 newPersona.setFechaNto(rs.getString("fechaNto"));
                 newPersona.setTelefono(rs.getInt("telefono"));
-                newPersona.setContraseña(rs.getString("contraseña"));
+                newPersona.setContrasena(rs.getString("contrasena"));
                 newPersona.setIdestadousuarios(rs.getInt("idestadousuarios"));
                 newPersona.setObservaciones(rs.getString("observaciones"));
                 listaPersonas.add(newPersona);
@@ -189,7 +189,7 @@ public String actualizarRol(rolusuarioDTO rol, Connection cnn) {
         personasDTO Rdao = null;
         try {
             pstmt = cnn.prepareStatement("select p.idPersona, p.correoElectronico, p.idCiudad, p.idNacionalidad, \n" +
-" p.nombres, p.apellidos, p.fechaNto, p.telefono, p.contraseña, p.idestadousuarios, p.observaciones, r.rolesIdRol\n" +
+" p.nombres, p.apellidos, p.fechaNto, p.telefono, p.contrasena, p.idestadousuarios, p.observaciones, r.rolesIdRol\n" +
 "from personas p\n" +
 "inner join rolusuario r\n" +
 "on p.idpersona=r.ususarioIdUsuario\n" +
@@ -210,7 +210,7 @@ public String actualizarRol(rolusuarioDTO rol, Connection cnn) {
                 Rdao.setApellidos(rs.getString("apellidos"));
                 Rdao.setFechaNto(rs.getString("fechaNto"));
                 Rdao.setTelefono(rs.getInt("telefono"));
-                Rdao.setContraseña(rs.getString("contraseña"));
+                Rdao.setContrasena(rs.getString("contrasena"));
                 Rdao.setIdestadousuarios(rs.getInt("idestadousuarios"));
                 Rdao.setObservaciones(rs.getString("observaciones"));
                 r.setRolesIdRol(rs.getInt("rolesIdRol"));
@@ -227,7 +227,7 @@ public String actualizarRol(rolusuarioDTO rol, Connection cnn) {
 
         try {
             String query = "select idPersona, correoElectronico, idCiudad, idNacionalidad, "
-                    + " nombres, apellidos, fechaNto, telefono, contraseña, idestadousuarios, observaciones from personas";
+                    + " nombres, apellidos, fechaNto, telefono, contrasena, idestadousuarios, observaciones from personas";
             pstmt = cnn.prepareStatement(query);
             rs = pstmt.executeQuery();
 
@@ -241,7 +241,7 @@ public String actualizarRol(rolusuarioDTO rol, Connection cnn) {
                 Rdao.setApellidos(rs.getString("apellidos"));
                 Rdao.setFechaNto(rs.getString("fechaNto"));
                 Rdao.setTelefono(rs.getInt("telefono"));
-                Rdao.setContraseña(rs.getString("contraseña"));
+                Rdao.setContrasena(rs.getString("contrasena"));
                 Rdao.setIdestadousuarios(rs.getInt("idestadousuarios"));
                 Rdao.setObservaciones(rs.getString("observaciones"));
                 listarPersonas.add(Rdao);
@@ -298,7 +298,7 @@ public String actualizarRol(rolusuarioDTO rol, Connection cnn) {
              * Sin embargo, en las lineas comentadas se ilustra el codigo completo para actualizar todos los campos
              *
              */
-            pstmt = cnn.prepareStatement("DELETE FROM Personas WHERE idPersona = ?; ");
+            pstmt = cnn.prepareStatement("DELETE FROM personas WHERE idPersona = ?; ");
             pstmt.setLong(1, idPersona);
 
             per = pstmt.executeUpdate();
@@ -324,11 +324,11 @@ public String actualizarRol(rolusuarioDTO rol, Connection cnn) {
 
         return msgSalida;
     }
- public String actualizarContraseña(personasDTO personas, Connection cnn) {
+ public String actualizarContrasena(personasDTO personas, Connection cnn) {
         try {
 
-            pstmt = cnn.prepareStatement("UPDATE personas SET contraseña=? WHERE idPersona=?");
-            pstmt.setString(1, personas.getContraseña());
+            pstmt = cnn.prepareStatement("UPDATE personas SET contrasena=? WHERE idPersona=?");
+            pstmt.setString(1, personas.getContrasena());
             pstmt.setLong(2, personas.getIdPersona());
 
             per = pstmt.executeUpdate();
@@ -344,7 +344,7 @@ public String actualizarRol(rolusuarioDTO rol, Connection cnn) {
         return msgSalida;
 
     }
-public long isAcountExists(String contraseña, Long idPersona, Connection cnn) throws SQLException {
+public long isAcountExists(String contrasena, Long idPersona, Connection cnn) throws SQLException {
        
        long y = 1;
        
@@ -354,10 +354,10 @@ public long isAcountExists(String contraseña, Long idPersona, Connection cnn) t
            
         
            
-           String sql = "select idPersona,contraseña from personas where idPersona = ? and contraseña = ?";        
+           String sql = "select idPersona,contrasena from personas where idPersona = ? and contrasena = ?";        
            pstmt = cnn.prepareStatement(sql);           
            pstmt.setLong(1, idPersona);
-           pstmt.setString(2, contraseña);
+           pstmt.setString(2, contrasena);
            rs = pstmt.executeQuery();
            
           
@@ -366,7 +366,7 @@ public long isAcountExists(String contraseña, Long idPersona, Connection cnn) t
                while (rs.next()) {
 
                    pde.setIdPersona(rs.getLong("idPersona"));
-                   pde.setContraseña(rs.getString("contraseña"));
+                   pde.setContrasena(rs.getString("contrasena"));
                  }
                y = pde.getIdPersona();
            }
@@ -446,7 +446,7 @@ public String EnviarCorreo(String correo, Connection cnn) {
         String clave = "";
         try {
 
-            pstmt = cnn.prepareStatement("select contraseña as clave from personas where correoElectronico = ?");
+            pstmt = cnn.prepareStatement("select contrasena as clave from personas where correoElectronico = ?");
             
             pstmt.setString(1, correo);
             rs = pstmt.executeQuery();
@@ -709,14 +709,14 @@ public List<listarPerDTO> Paginacion2(int pg , int limited, Connection cnn) thro
         return cond;
 }
 
-public synchronized long login(String contraseña, long idPersona, Connection conexion) throws SQLException  {
+public synchronized long login(String contrasena, long idPersona, Connection conexion) throws SQLException  {
         long cc = 0;
         try{
             pstmt = conexion.prepareStatement("SELECT idPersona "
-                    + "from personas where idPersona= ? and contraseña=?");
+                    + "from personas where idPersona= ? and contrasena=?");
             
            pstmt.setLong(1, idPersona);
-           pstmt.setString(2, contraseña);
+           pstmt.setString(2, contrasena);
             rs = pstmt.executeQuery();
             if (rs != null) {
                 while (rs.next()) {
