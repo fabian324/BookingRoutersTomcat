@@ -100,6 +100,13 @@ $(document).ready(function(){
 </div>
 <nav>
   <ul id="main">
+  <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-send"></span> Gestion Conductores</a>
+  <ul class="submain">
+  <li><a href="registroConductores.jsp?msj=" style="text-decoration: none;">Creación Conductor</a></li>
+  <li><a href="ModRuta.jsp?msj=" style="text-decoration: none;">Modificación de conductor</a> </li>
+  </ul>
+  </div>  
+  </li>  
   <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-send"></span> Gestión Rutas</a>
   <ul class="submain">
   <li><a href="reservaRutas.jsp?msj=" style="text-decoration: none;">Creación de Rutas</a></li>

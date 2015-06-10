@@ -150,6 +150,48 @@ public String actualizarRol(rolusuarioDTO rol, Connection cnn) {
         return msgSalida;
 
     }
+     public String crearConductor(personasDTO newPersona, Connection cnn) throws SQLException {
+        //String salida = "";
+        try {
+
+            int resultado = 0;
+            pstmt = cnn.prepareStatement("INSERT INTO personas VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            pstmt.setLong(1, newPersona.getIdPersona());
+            pstmt.setString(2, newPersona.getCorreoElectronico());
+            pstmt.setInt(3, newPersona.getIdCiudad());
+            pstmt.setInt(4, newPersona.getIdNacionalidad());
+            pstmt.setString(5, newPersona.getNombres());
+            pstmt.setString(6, newPersona.getApellidos());
+            pstmt.setString(7, newPersona.getFechaNto());          
+            pstmt.setInt(8, newPersona.getIdestadousuarios());
+            pstmt.setString(9, newPersona.getObservaciones());
+            pstmt.setString(10, newPersona.getSexo());
+            pstmt.setInt(11, newPersona.getTelefono());
+                      
+            
+            resultado = pstmt.executeUpdate();
+
+            if (resultado != 0) {
+               msgSalida = "El usuario a sido registrado exitosamente. ";
+            } else {
+                // salida = "Ha ocurrido un problema al crear el profesor. Contacte al administrador";
+
+            }
+        } catch (SQLException sqle) {
+            msgSalida = "Ocurrió la siguiente exception  : " + sqle.getMessage();
+        } finally {
+            try {
+                pstmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(personasDAO.class.getName()).log(Level.SEVERE, null, ex); // se deja por defecto en este caso
+            }
+        }
+
+        return msgSalida;
+
+    }
+
+   
 
    
     public List<personasDTO> getAll(Connection cnn) throws SQLException {

@@ -227,6 +227,9 @@ public class FacadePersonas {
     public String crearPersona(personasDTO perss) throws SQLException {
         return pers.crearPersona(perss, cnn);
     }
+     public String crearConductor(personasDTO perss) throws SQLException {
+        return pers.crearConductor(perss, cnn);
+    }
 
     public personasDTO ListarUnaPersona(long cedula) throws SQLException {
         return pers.ListarUnaPersona(cedula, cnn);
