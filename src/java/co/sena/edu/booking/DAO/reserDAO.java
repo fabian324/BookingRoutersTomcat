@@ -365,5 +365,32 @@ public class reserDAO {
            }
        return clave;
        } 
+    public String validarFecha(int idReserva, Connection cnn) throws SQLException {
+       
+       String y = "";
+       
+       try {         
+           String sql = "select fechaReserva from reservas where idReserva = ?";        
+           pstmt = cnn.prepareStatement(sql);           
+           pstmt.setInt(1, idReserva);           
+           rs = pstmt.executeQuery();
+                     
+           if (rs != null) {
+               
+               while (rs.next()) {
+                   
+                   y = rs.getString("fechaReserva");
+                 }
+           }
+           else {
+               y = null;
+           }       
+       
+       } catch (SQLException ex) {      
+           
+       }
+       
+        return y;
+    }
 }
                           

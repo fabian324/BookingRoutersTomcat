@@ -423,17 +423,13 @@ public long isAcountExists(String contrasena, Long idPersona, Connection cnn) th
        
        try {
 
-           personasDTO pde = new personasDTO();
-           
-        
-           
+           personasDTO pde = new personasDTO();          
            String sql = "select idPersona,contrasena from personas where idPersona = ? and contrasena = ?";        
            pstmt = cnn.prepareStatement(sql);           
            pstmt.setLong(1, idPersona);
            pstmt.setString(2, contrasena);
            rs = pstmt.executeQuery();
-           
-          
+                     
            if (rs != null) {
                
                while (rs.next()) {
@@ -445,13 +441,9 @@ public long isAcountExists(String contrasena, Long idPersona, Connection cnn) th
            }
            else {
                y = 0;
-           }
+           }       
        
-       
-       } catch (SQLException ex) {
-
-          
-           
+       } catch (SQLException ex) {      
            
        }
 return y;
@@ -829,5 +821,119 @@ public synchronized int getRol(personasDTO idPersona,Connection conexion) throws
         //devolvemos el usuario que se encontro
         return rol;
     }
+public List<personasDTO> listarTodosConductores(long cedula, Connection cnn) throws SQLException {
+        ArrayList<personasDTO> listarPersonas = new ArrayList();
 
+        try {
+            String query = "select p.idPersona,p.nombres,p.apellidos,c.ciudad,n.nacionalidad,p.telefono,p.correoElectronico from personas p \n" +
+"inner join ciudades c on p.idCiudad = c.idCiudad\n" +
+"inner join nacionalidades n on p.idNacionalidad= n.idNacionalidad where p.idestadousuarios='4';";
+            pstmt = cnn.prepareStatement(query);
+            pstmt.setLong(1, cedula);
+            rs = pstmt.executeQuery();
+
+               while (rs.next()) {
+               personasDTO Rdao = new personasDTO(); 
+               nacionalidadesDTO nac = new nacionalidadesDTO();
+               ciudadesDTO ciudad = new ciudadesDTO();
+               Rdao.setIdPersona(rs.getLong("idPersona"));
+               Rdao.setNombres(rs.getString("nombres"));
+               Rdao.setApellidos(rs.getString("apellidos"));              
+               ciudad.setCiudad(rs.getString("ciudad"));             
+               nac.setNacionalidad(rs.getString("nacionalidad"));              
+               Rdao.setTelefono(rs.getInt("telefono"));
+               Rdao.setCorreoElectronico(rs.getString("correoElectronico")); 
+               Rdao.setCiu(ciudad);
+               Rdao.setNac(nac);
+               listarPersonas.add(Rdao);
+            }
+
+        } catch (SQLException slqE) {
+            System.out.println("Ocurrio un error" + slqE.getMessage());
+        } finally {
+
+        }
+        return listarPersonas;
+    }
+public int contarConductores(Connection cnn){
+        int registros = 0;
+        try{
+            pstmt=cnn.prepareStatement("SELECT * FROM personas where idestadousuarios='4';");
+            
+            rs = pstmt.executeQuery();
+            
+            if (rs!=null) {
+                while(rs.next()){
+                registros++;
+            }
+            return registros;
+            }
+              
+            
+        }catch(SQLException sqle){
+            msgSalida = sqle.getMessage();
+        }
+        return registros;
+    }
+public List<personasDTO> PaginacionConductores(int pg , int limited, Connection cnn) throws SQLException {
+        ArrayList<personasDTO> Paginacion = new ArrayList();
+
+        try {
+            
+            pstmt = cnn.prepareStatement("select p.idPersona,p.nombres,p.apellidos,c.ciudad,n.nacionalidad,p.telefono,p.correoElectronico from personas p \n" +
+"inner join ciudades c on p.idCiudad = c.idCiudad\n" +
+"inner join nacionalidades n on p.idNacionalidad= n.idNacionalidad where p.idestadousuarios='4' order by Nombres asc limit "+(pg-1)*limited+","+limited+";");
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+               personasDTO Rdao = new personasDTO(); 
+               nacionalidadesDTO nac = new nacionalidadesDTO();
+               ciudadesDTO ciudad = new ciudadesDTO();
+               Rdao.setIdPersona(rs.getLong("idPersona"));
+               Rdao.setNombres(rs.getString("nombres"));
+               Rdao.setApellidos(rs.getString("apellidos"));              
+               ciudad.setCiudad(rs.getString("ciudad"));             
+               nac.setNacionalidad(rs.getString("nacionalidad"));              
+               Rdao.setTelefono(rs.getInt("telefono"));
+               Rdao.setCorreoElectronico(rs.getString("correoElectronico")); 
+               Rdao.setCiu(ciudad);
+               Rdao.setNac(nac);               
+               Paginacion.add(Rdao);
+
+            }
+
+        } catch (SQLException slqE) {
+            System.out.println("Ocurrio un error" + slqE.getMessage());
+        } finally {
+
+        }
+        return Paginacion;
+    }
+public String actualizarConductor(personasDTO personas, Connection cnn) {
+        try {
+
+            pstmt = cnn.prepareStatement("UPDATE personas SET nombres=?,apellidos=?, idpersona=?,fechaNto=?,telefono=?,correoElectronico=?  WHERE idPersona=?");
+
+           
+            pstmt.setString(1, personas.getNombres());
+            pstmt.setString(2, personas.getApellidos());
+            pstmt.setLong(3, personas.getIdPersona());
+            pstmt.setString(4, personas.getFechaNto());
+            pstmt.setInt(5, personas.getTelefono());          
+            pstmt.setString(6, personas.getCorreoElectronico());
+            pstmt.setLong(7, personas.getIdPersona());
+            
+            per = pstmt.executeUpdate();
+            if (per > 0) {
+                msgSalida = "Sus datos se modificaron";
+            } else {
+                msgSalida = "NO se pudo actualizar el registro";
+            }
+        } catch (SQLException ex) {
+            msgSalida = "Error al ejecutar la operación : " + ex.getSQLState() + " " + ex.getMessage();
+
+        }
+        return msgSalida;
+
+    }
 }

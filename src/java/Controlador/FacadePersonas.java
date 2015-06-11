@@ -56,6 +56,21 @@ public class FacadePersonas {
         cnn = reserConex.getInstance();
 
     }
+    public String validarFecha(int idReserva) throws SQLException{
+        return reser.validarFecha(idReserva, cnn);
+    }
+    public String actualizarConductores(personasDTO per) {
+        return pers.actualizarConductor(per, cnn);
+    }
+    public List PaginacionConductores(int pg, int limited) throws SQLException {
+        return pers.PaginacionConductores(pg, limited, cnn);
+    }
+    public int contarConductores() {
+        return pers.contarConductores(cnn);
+    }
+    public List listarTodosConductores(long cedula) throws SQLException {
+        return pers.listarTodosConductores(cedula, cnn);
+    }
     public String eliminarPersonaReserva(int idReserva){
         return pereser.eliminarPersonaReserva(idReserva, cnn);
     }

@@ -11,10 +11,14 @@ import co.sena.edu.booking.DTO.personasDTO;
 import co.sena.edu.booking.DTO.rolusuarioDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,7 +36,7 @@ FacadePersonas facadeP = new FacadePersonas();
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
        //         if (request.getParameter("submit10") != null) {
 //
@@ -60,7 +64,27 @@ FacadePersonas facadeP = new FacadePersonas();
               r.setUsuarioIdUsuario(Integer.parseInt(request.getParameter("doc")));
               String m= facadeP.actualizarRol(r);
               response.sendRedirect("verificarRegistro.jsp?msgSalida="+m);
+              
+         } else if(request.getParameter("registro") != null){
+              personasDTO r= new personasDTO();
+              personasDAO pdao = new personasDAO();
+              r.setIdPersona(Long.parseLong(request.getParameter("doc")));
+              r.setNombres(request.getParameter("nombres"));
+              r.setApellidos(request.getParameter("apellidos"));
+              r.setFechaNto(request.getParameter("date"));
+              r.setTelefono(Integer.parseInt(request.getParameter("tel")));
+              r.setCorreoElectronico(request.getParameter("cor"));
+              String m= facadeP.actualizarConductores(r);
+              response.sendRedirect("modificarConductor.jsp?msgSalida="+m);
          }
+         else if (request.getParameter("idcon") != null) {
+            personasDAO pdao = new personasDAO();
+            personasDTO eliminado = new personasDTO();
+            eliminado = facadeP.ListarUnaPersona(Long.parseLong(request.getParameter("idcon")));
+            HttpSession misesion = request.getSession(true);
+            misesion.setAttribute("logueado", eliminado);
+            response.sendRedirect("modificarcond.jsp?eliminado=" + eliminado);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -75,7 +99,11 @@ FacadePersonas facadeP = new FacadePersonas();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    try {
         processRequest(request, response);
+    } catch (SQLException ex) {
+        Logger.getLogger(modificarRol.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }
 
     /**
@@ -89,7 +117,11 @@ FacadePersonas facadeP = new FacadePersonas();
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    try {
         processRequest(request, response);
+    } catch (SQLException ex) {
+        Logger.getLogger(modificarRol.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }
 
     /**

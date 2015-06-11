@@ -1,3 +1,5 @@
+<%@page import="co.sena.edu.booking.DTO.nacionalidadesDTO"%>
+<%@page import="co.sena.edu.booking.DTO.ciudadesDTO"%>
 <%@page import="Controlador.FacadePersonas"%>
 <%@page import="co.sena.edu.booking.DTO.serviciosDTO"%>
 <%@page import="co.sena.edu.booking.DTO.empresatransportesDTO"%>
@@ -8,6 +10,15 @@
 <%@page import="co.sena.edu.booking.DAO.personasDAO"%>
 <%@page import="co.sena.edu.booking.DTO.reserDTO"%>
 <!doctype html>
+<%
+            HttpSession misesion = request.getSession(false);
+
+            if (misesion.getAttribute("logueado") != null) {
+                personasDTO pdto = null;              
+               
+                pdto =(personasDTO) misesion.getAttribute("logueado");
+                
+                %>
 <html>
 <head>
 <style type="text/css">
@@ -80,85 +91,121 @@ $(document).ready(function(){
   <li><a href="Controlador?action=logout"><span class="glyphicon glyphicon-remove-sign"></span> Cerrar sesion</a></li>
 </ul>
   </nav>  
-</div>
-    <%
-      HttpSession misesion = request.getSession(false);
-      if(misesion.getAttribute("logueado") != null) {
-      empresatransportesDTO t = new empresatransportesDTO();
-      serviciosDTO se =new serviciosDTO();  
-      reserDTO  per= new reserDTO();
-      FacadePersonas facadeP = new FacadePersonas();
-      personasDTO persona = (personasDTO)misesion.getAttribute("logueado");
-         int numreg = facadeP.contarReservas();
-     int numpg = numreg/5;   
-     int pg =0; 
-     ArrayList<personasDTO> personas = new ArrayList();
-      ArrayList<reserDTO> misReservas= new ArrayList();      
-  personas = (ArrayList) facadeP.ListarUnConductor();
-%>  
 <center>
-    <table>      
- <tr>
-                                <td colspan="2" style="text-align: center">
-                                    <% if (request.getParameter("msj") != null) {%>
-                                    <% if (!request.getParameter("msj").equals("")) {%> 
-                                    <div class="exito mensajes" role="alert">
-                                        <%= request.getParameter("msj")%>
-                                    </div>
-                                    <% }%>   
-                                    <% }%> 
-                                </td>
-                            </tr>
-  </table>
- </center>  
+    <%
+ 
+     ciudadesDTO ciudad = new ciudadesDTO();
+     nacionalidadesDTO nac = new nacionalidadesDTO();
+     FacadePersonas facadeP = new FacadePersonas();
+     personasDTO  per= new personasDTO();
+     personasDAO pers = new personasDAO();
+     ArrayList<personasDTO> misPersonas= new ArrayList();  
+     misPersonas = (ArrayList) facadeP.listarTodosConductores(per.getIdPersona());
+     int numreg = facadeP.contarConductores();
+     int numpg = numreg/5;   
+     int pg =0; //pagona a mostrar
+     if(request.getParameter("pg")==null){
+     pg=1;
+     }else{
+     pg=Integer.valueOf(request.getParameter("pg"));
+     }
+     misPersonas =(ArrayList<personasDTO>) facadeP.PaginacionConductores(pg,3); 
+     
+     %> 
 <div class="ba">
-      <h1> Mis Conductores</h1>
+<h1><center>Conductores Registrados</center></h1>
 </div>
-      <br>
-<table borber="1" class="table table-bordered">
-    <tbody>
-    <tr>
-       
-        <th class="success">Documento</th>
-        <th class="success">Nombre</th>
-        <th class="success">Apellido</th>
-        <th class="success">Correo Electronico</th>
+ <br>     
+ <center>
+ <div class="busqueda">
+ <span style="font-weight:bold;">Búsqueda:&nbsp;</span>
+ <input id="inputFiltro" type="text" />
+  <center>
+               <table>
+                   <tr>
+                <td colspan="2" style="text-align: center">
+                    <% if (request.getParameter("msgSalida") != null) {%>
+                    <% if (!request.getParameter("msgSalida").equals("")) {%> 
+                    <div class="alert exito mensajes" role="alert">
+                        <%= request.getParameter("msgSalida")%>
+                    </div>
+                    <%}%>
+                    <%}%> 
+                </td>
+                   </tr>
+               </table>
+         </center>
+ </div>
+      <div class="col-md-10">
+      <table borber="1"  class="table table-striped table-condensed" id="divTabla">
+       <tbody>
+        <tr>
+        <th class="success">Cedúla</th>
+        <th class="success">Nombres</th>
+        <th class="success">Apellidos</th>
+        <th class="success">Ciudad</th>
+        <th class="success">País</th>
         <th class="success">Telefono</th>
-        <th class="success">Modificar</th>
-       <th class="success">Eliminar</th>
+        <th class="success">Correo Electronico</th>
+        <th class="success">Eliminar Registro</th>
+        <th class="success">Verificar Registro</th>
     </tr>
    
     <%
-      for(personasDTO so: personas){      
+      for(personasDTO so: misPersonas){
+          
+      
     %>
     <tr>
-        <td><%=so.getIdPersona()%></td>
-        <td><%=so.getNombres()%></td> 
+        <td zz><%=so.getIdPersona()%></td>
+        <td><%=so.getNombres()%></td>
         <td><%=so.getApellidos()%></td>
-        <td><%=so.getCorreoElectronico()%></td>
+        <td><%=so.getCiu().getCiudad()%></td>
+        <td><%=so.getNac().getNacionalidad()%></td>
         <td><%=so.getTelefono()%></td>
-        
-        <td><a href="modificarcond.jsp?idPersona=<%=so.getIdPersona()%>&nombreConductor=<%=so.getNombres()%>&apellidoConductor=<%=so.getApellidos()%>&correo=<%=so.getCorreoElectronico()%>&telefono=<%=so.getTelefono()%>&ciudad=<%=so.getCiu().getCiudad()%>&pais=<%=so.getNac().getNacionalidad()%>&sexo=<%=so.getSexo()%>&fechanac=<%=so.getFechaNto()%>"class="btn btn-success">Modificar</a></td>
-         <td><a href="modificarAcompanantes?idPersona=<%=so.getIdPersona()%>"><img src="imagenes/Eliminar.png" onclick="return comfirmar()" align="middle" width="32" height="32" title="Eliminar"></a></td>
-      
-     </tbody>
+        <td><%=so.getCorreoElectronico()%></td>
+        <td><a href="Controlador?id=<%=so.getIdPersona()%>"><img src="imagenes/Eliminar.png"   onclick="return confirmar()" align="middle" width="32" height="32" title="Eliminar"></a></td>
+        <td><a href="modificarRol?idcon=<%=so.getIdPersona()%>" class="btn btn-success" title="Verificar Registro">Verificar</a></td>
     </tr>
-    <%
-    }
-    %>
-</table>
+     </tbody>
+<%
+}
+%>
+      </table>
+                </div>
 
+      
+<div class="pagination" id="">
+     <%
+     int adelanteA;
+     if (request.getParameter("pg")==null) {
+             adelanteA =1;
+         }else{
+     adelanteA =Integer.parseInt(request.getParameter("pg"));
+     }
+         
+     %> 
+    <a href="?pg=<%=adelanteA-1%>">&laquo</a>
+    
+    <%      
+       for(int j=0;j<numpg+1;j++){
+       %>  
+       <a href="?pg=<%=j+1%>"><%=j+1 %></a>
+ <%
+     }
+ %>
 
-<br>
-<br>
+<a href="?pg=<%=adelanteA+1%>">&raquo</a>
+  
+</div>
+</center>
 <div style="width:100%; background: #0C4391; height: 30px; margin-top:10px; padding-top:5px; border-radius:3px;color:#e2c60f; margin-bottom:1%; float:left; text-align: center;height:70px;color:white;">
         <span>Booking Routers &copy; 2015</span><br>
         Integrantes :<span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Yilber Hernandez 
         <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
         <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Sergio Stiven Urbiba
         <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Andres Feipe Guerrero<br>
-        <img src="imagenes/dddd.png"><a href="ModificarReservas1.jsp" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="ModificarReservas.jsp" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
-
+        <img src="imagenes/dddd.png"><a href="verificarRegistro1.jsp" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="verificarRegistro.jsp" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
 </div>
 <%
        }else{

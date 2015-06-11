@@ -5,6 +5,20 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="co.sena.edu.booking.DAO.nacionalidadesDAO"%>
 <!doctype html>
+<%
+                                    HttpSession misesion = request.getSession(false);
+
+                                    if (misesion.getAttribute("logueado") != null) {
+                                        
+                                        personasDTO pdto = null;
+                                        personasDTO persona = null;
+                                        FacadePersonas facadeP = new FacadePersonas();
+                                        pdto = (personasDTO) misesion.getAttribute("logueado");
+                                        
+                                        persona = facadeP.ListarUnaPersona(pdto.getIdPersona());
+                                      
+
+                                %>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -31,7 +45,7 @@
                     </li>
                 </ul>
             </nav>  
-            <form name="form1" action="registroConductor" method="post" id="form1"> 
+            <form name="form1" action="modificarRol" method="post" id="form1"> 
 
                 <table width="744" align="center">
 
@@ -44,70 +58,26 @@
                     </div> 
                     <tr>
                         <td><label for="nombres" class="labele"><strong>Nombres<font color="#FF0000">*</strong></label></font></td>
-                        <td><input name="nombres"  value="<%=request.getParameter("nombreConductor") %>" type="text" style="width:250px; height:25px " autofocus id="nombres" placeholder="Nombres" required class="form-control" onChange="requisitos(nombres)" onkeypress="return validLetter(event);">
+                        <td><input name="nombres"  value="<%=persona.getNombres()%>" type="text" style="width:250px; height:25px " autofocus id="nombres" placeholder="Nombres" required class="form-control" onChange="requisitos(nombres)" onkeypress="return validLetter(event);">
                         </td>
                         <td><label for="ape" class="labele"><strong>Apellidos<font color="#FF0000">*</strong></label></font></td>
-                        <td><input name="apellidos" value="<%=request.getParameter("apellidoConductor") %>"  type="text" style="width:250px; height:25px" autofocus id="apellidos" placeholder="Apellidos" required class="form-control inputtext"tabindex="2" onChange="requisitos(apellidos)" onkeypress="return validLetter(event)">
+                        <td><input name="apellidos" value="<%=persona.getApellidos()%>"  type="text" style="width:250px; height:25px" autofocus id="apellidos" placeholder="Apellidos" required class="form-control inputtext"tabindex="2" onChange="requisitos(apellidos)" onkeypress="return validLetter(event)">
                         </td>
                     </tr>
                     <tr>
                         <td><label for="doc" class="labele"><strong>Documento <font color="#FF0000">*</strong></label></font></td>
-                        <td><input name="doc" value="<%=request.getParameter("idPersona") %>"  type="text" style="width:250px; height:30px" autofocus id="doc" placeholder="Doc Identidad" required class="form-control inputtext" tabindex="3" onChange="requisitos(doc)" onkeypress="return validNumber(event)" minlenght=8></td>    
+                        <td><input name="doc" value="<%=persona.getIdPersona() %>"  type="text" style="width:250px; height:30px" autofocus id="doc" placeholder="Doc Identidad" required class="form-control inputtext" tabindex="3" onChange="requisitos(doc)" onkeypress="return validNumber(event)" minlenght=8></td>    
                         <td><label for="date" class="labele"><strong>Fecha Nacimiento<font color="#FF0000">* </strong></label></font></td>
-                        <td><input name="date" value="<%=request.getParameter("fechanac") %>"   type="date" id="date" style="width:250px; height:25px" required class="form-control inputtext" tabindex="4" onChange="edad(date)"></td>    
+                        <td><input name="date" value="<%=persona.getFechaNto()%>"   type="date" id="date" style="width:250px; height:25px" required class="form-control inputtext" tabindex="4" onChange="edad(date)"></td>    
                     </tr>
                     <tr>
                         <td><label for="tel" class="labele"><strong> Teléfono <font color="#FF0000">*</strong></label></font></td>
-                        <td><input name="tel" type="text" value="telefono" id="tel" style="width:250px; height:25px" placeholder="Telefono" autofocus  required class="form-control inputtext" tabindex="6" onChange="requisitos(tel)" onkeypress="return validNumber(event)"></td>   
+                        <td><input name="tel" type="text" value="<%=persona.getTelefono()%>" id="tel" style="width:250px; height:25px" placeholder="Telefono" autofocus  required class="form-control inputtext" tabindex="6" onChange="requisitos(tel)" onkeypress="return validNumber(event)"></td>   
                         <td><label for="cor" class="labele"><strong>Correo<font color="#FF0000">*</strong></label></font></td>
-                        <td><input name="cor" value="<%=request.getParameter("correo") %>"  type="email" id="cor" style="width:250px; height:25px" placeholder="asldj@misena.edu.co" autofocus required class="form-control inputtext" tabindex="7" onChange="requisitos(cor)"></td>
+                        <td><input name="cor" value="<%=persona.getCorreoElectronico() %>"  type="email" id="cor" style="width:250px; height:25px" placeholder="asldj@misena.edu.co" autofocus required class="form-control inputtext" tabindex="7" onChange="requisitos(cor)"></td>
                     </tr>    
-                    <tr>
-                        <td><label for="paisnac" class="labele"><strong>País <font color="#FF0000">* </strong></label></font></td>
-                        <td>
-                            <%--<input name="paisnac" id="paisnac" style="width:250px; height:35px" placeholder="Seleccione país" autofocus required class="form-control inputtext" list="paises" tabindex="8" onChange="requisitos(paisnac)">--%>
-                            <select id="paises" name="paisnac" id="paisnac" style="width:250px; height:35px" autofocus required class="form-control inputtext" list="paises" tabindex="8" onchange="getCiudades(this.value);" onChange="requisitos(paisnac)">
-                                <option value="0" >------</option>
-
-                                <%
-                                    nacionalidadesDAO cdao = new nacionalidadesDAO();
-                                    FacadePersonas facadeP = new FacadePersonas();
-                                    ArrayList<nacionalidadesDTO> Ciud = new ArrayList();
-                                    Ciud = (ArrayList) facadeP.listarNacionalidades();
-                                    for (nacionalidadesDTO cdto : Ciud) {
-                                %>   
-                                <option <%if (request.getParameter("pais").equals("Mujer")){%> selected <%}%>value="<%=cdto.getIdNacionalidad()%>"> <%=cdto.getNacionalidad()%></option>
-                                <%
-                                    }
-                                %>
-                            </select>
-                        </td>
-                        <td><label for="ciunac" class="labele"><strong>Ciudad<font color="#FF0000">*</strong></label></font></td>
-                        <td>
-                            <%--<input name="ciunac" id="ciunac" style="width:250px; height:35px" placeholder="Seleccione ciudad" autofocus required class="form-control inputtext"  list="ciudades" tabindex="9" size="30" onChange="requisitos(ciunac)">--%>
-                            <select  name="ciunac" id="ciunac" style="width:250px; height:35px" autofocus required class="form-control inputtext"  list="ciudades" tabindex="9" onChange="requisitos(cuinac)">
-                                <option value="0" >Elija Ciudad</option>
-                        </select>
-                        </td>
-                        <td nowrap>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td><label for="pSexo" class="labele"><strong>Sexo<font color="#FF0000">* </strong></label></font></td>
-                        <td>
-                            <%--<input name="paisnac" id="paisnac" style="width:250px; height:35px" placeholder="Seleccione país" autofocus required class="form-control inputtext" list="paises" tabindex="8" onChange="requisitos(paisnac)">--%>
-                            <select name="pSexo" required id="pSexo" class="form-control" onChange="requisitos(pSexo)">
-                                <option value="">Seleccione su sexo</option>
-                                    <option<%if (request.getParameter("sexo").equals("Mujer")){%> selected <%}%> value="Mujer">Mujer</option>
-                                    <option <%if (request.getParameter("sexo").equals("Hombre")){%> selected <%}%> value="Hombre">Hombre</option>
-                                </select>
-                        </td>
-                    </tr>
+                    
+                   
                    
                     <tr>
                         <td><input type="submit" name="registro"  id="registro" class="btn btn-success"  value="Registrar" onclick="validar(registro)"   style="position:relative; left:280px">
@@ -125,6 +95,11 @@
             <img src="imagenes/dddd.png"><a href="registro1.jsp" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="registro.jsp" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
 
         </div>
-     
+                          </div>
+         <%
+       }else{
+       response.sendRedirect("index.jsp");
+         }
+       %>
     </body>
     <html>

@@ -42,6 +42,9 @@ FacadePersonas facadeP = new FacadePersonas();
 
             reserDTO to = new reserDTO();
             reserDAO dao = new reserDAO();
+            //String f= facadeP.validarFecha(Integer.parseInt(request.getParameter("fecNac")));
+            //if(f!= null){
+            
             long t = facadeP.validarReservas(Integer.parseInt(request.getParameter("doc")));
             if (t >= 5) {
                 response.sendRedirect("reserva.jsp?noo=" + t);
@@ -60,6 +63,8 @@ FacadePersonas facadeP = new FacadePersonas();
                 to.setPaisorigen(request.getParameter("OrigenPais"));
                 
                 String mensaje = facadeP.insertar(to);
+            
+         
                 int idReserva = facadeP.obtenerUltimaReserva(Integer.parseInt(request.getParameter("doc")));
                 personasDAO persona = new personasDAO();
                 personasDTO pdto = new personasDTO();
@@ -131,6 +136,9 @@ FacadePersonas facadeP = new FacadePersonas();
                 }
 
             }
+        //}else{
+                //response.sendRedirect("reserva.jsp?noo=" + f);
+            //}
         }
     }
 
