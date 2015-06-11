@@ -209,6 +209,9 @@ public class FacadePersonas {
     public List listarReservaPer(Long id) throws SQLException {
         return reser.listarReservaPer(id, cnn);
     }
+    public List  ListarUnConductor () throws SQLException {
+     return pers.listarUnConductor(cnn);
+    }
  public List  listarreservaru () throws SQLException {
      return reser.listarreservaru(cnn);
     }

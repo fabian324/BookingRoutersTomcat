@@ -87,6 +87,37 @@ public class personasDAO {
         return msgSalida;
 
     }
+    public List<personasDTO> listarUnConductor(Connection cnn) throws SQLException {
+        ArrayList<personasDTO> listarmisconductores = new ArrayList();
+        try {
+           String query = " select idPersona,nombres,apellidos,telefono,correoElectronico,idCiudad,idNacionalidad,fechanto,sexo,observaciones \n" +
+" from personas where idestadousuarios= 4; ";
+            pstmt = cnn.prepareStatement(query);  
+           pstmt.executeQuery();
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                personasDTO Rdao = new personasDTO();
+                Rdao = new personasDTO();
+                Rdao.setIdPersona(rs.getLong("idPersona"));
+                 Rdao.setNombres(rs.getString("nombres"));
+                Rdao.setApellidos(rs.getString("apellidos"));
+                 Rdao.setTelefono(rs.getInt("telefono"));
+                Rdao.setCorreoElectronico(rs.getString("correoElectronico"));
+                Rdao.setIdCiudad(rs.getInt("idCiudad"));
+                Rdao.setIdNacionalidad(rs.getInt("idNacionalidad"));
+                Rdao.setFechaNto(rs.getString("fechaNto"));
+                Rdao.setSexo(rs.getString("sexo"));
+                Rdao.setObservaciones(rs.getString("observaciones"));
+              
+              listarmisconductores.add(Rdao);
+            }
+        } catch (SQLException ex) {
+            msgSalida = "Error " + ex.getMessage() + "Codigo de error" + ex.getErrorCode();
+        }
+        return listarmisconductores;
+    }
 public String actualizarRol(rolusuarioDTO rol, Connection cnn) {
         try {
 

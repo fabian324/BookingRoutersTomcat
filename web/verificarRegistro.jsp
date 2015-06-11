@@ -103,7 +103,7 @@ $(document).ready(function(){
   <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-send"></span> Gestion Conductores</a>
   <ul class="submain">
   <li><a href="registroConductores.jsp?msj=" style="text-decoration: none;">Creación Conductor</a></li>
-  <li><a href="ModRuta.jsp?msj=" style="text-decoration: none;">Modificación de conductor</a> </li>
+  <li><a href="modificarConductor.jsp?msj=" style="text-decoration: none;">Modificación de conductor</a> </li>
   </ul>
   </div>  
   </li>  
