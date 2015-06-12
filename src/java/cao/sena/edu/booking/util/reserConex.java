@@ -15,7 +15,7 @@ public class reserConex {
     private static void conectar() {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb2", "root", "1234");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb2", "root", "");
            // String url = "jdbc:mysql://127.3.227.130:3306/booking";
            // conexion = DriverManager.getConnection(url,"adminJrYBnx1","iKjaD6H-KsdF");
         } catch (SQLException e) {

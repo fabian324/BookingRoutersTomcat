@@ -40,8 +40,7 @@ FacadePersonas facadeP = new FacadePersonas();
             throws ServletException, IOException, SQLException {
        response.setContentType("text/html;charset=UTF-8");
         if (request.getParameter("registro") != null) {
-           
-            personasDTO pdto = new personasDTO();
+         personasDTO pdto = new personasDTO();
             personasDAO pdao = new personasDAO();
 
             pdto.setIdPersona(Long.parseLong(request.getParameter("doc")));
@@ -53,14 +52,90 @@ FacadePersonas facadeP = new FacadePersonas();
             pdto.setIdCiudad(Integer.parseInt(request.getParameter("ciunac")));
             pdto.setSexo(request.getParameter("pSexo"));
             pdto.setTelefono(Integer.parseInt(request.getParameter("tel")));
+            pdto.setContrasena(request.getParameter("con"));
             pdto.setIdestadousuarios(4);
             pdto.setObservaciones("Ninguna");
 
-             facadeP.crearConductor(pdto);
-             response.sendRedirect("registroConductores");
-       
+            String mensaje = facadeP.crearConductor(pdto);
+            HttpSession misesion = request.getSession(true);
+            misesion.setAttribute("logueado", pdto);
+            response.sendRedirect("verificarRegistro.jsp?msgSalida=" + mensaje);
+            String asunto = "Datos Registro";
+            String cuerpomsj = "<!DOCTYPE html>";
+            cuerpomsj += "<br>";
+            cuerpomsj += "<br>";
+            cuerpomsj += "<br>";
+            cuerpomsj += "<body>";
+            cuerpomsj += "<center>";
+            cuerpomsj += "<div style=\" border-radius: 25px; color: black; \">";
+            cuerpomsj += "<h1><Strong style=\"color: #0C4391   \" >Bienvenido "+ pdto.getNombres() +" a Booking Routers</Strong></h1>";
+            cuerpomsj += "<h3><Strong style=\"color: black   \"  >Sus datos de registro principales son</Strong></h3>";
+            cuerpomsj += "<table border='1' borderColor='#819FF7' style=\" background-color: #D8CBCB; \">";
+            cuerpomsj += "<tr>";
+            cuerpomsj += "<th bgColor='#0C4391' style=\"color: white; \">Apellidos";
+            cuerpomsj += "</th>";
+            cuerpomsj += "<th bgColor='#0C4391' style=\"color: white; \">Nombres";
+            cuerpomsj += "</th>";
+            cuerpomsj += "<th bgColor='#0C4391' style=\"color: white; \">Usuario";
+            cuerpomsj += "</th>";
+            cuerpomsj += "<th bgColor='#0C4391' style=\"color: white; \">Contraseña";
+            cuerpomsj += "</th>";
+            cuerpomsj += "<th bgColor='#0C4391' style=\"color: white; \">Email";
+            cuerpomsj += "</th>";
+            cuerpomsj += "<th bgColor='#0C4391' style=\"color: white; \">Telefono";
+            cuerpomsj += "</th>";
+            cuerpomsj += "</tr>";
+            cuerpomsj += "<tr>";
+            cuerpomsj += "<th bgColor='white' style=\"color: black;\">" + pdto.getApellidos();
+            cuerpomsj += "</th>";
+            cuerpomsj += "<th bgColor='white' style=\"color: black;\">" + pdto.getNombres();
+            cuerpomsj += "</th>";
+            cuerpomsj += "<th bgColor='white' style=\"color: black; \">" + pdto.getIdPersona();
+            cuerpomsj += "</th>";
+            cuerpomsj += "<th bgColor='white' style=\"color: black; \">" + pdto.getContrasena();
+            cuerpomsj += "</th>";
+            cuerpomsj += "<th bgColor='white' style=\"color: black;\">" + pdto.getCorreoElectronico();
+            cuerpomsj += "</th>";
+            cuerpomsj += "<th bgColor='white' style=\"color: black; \">" + request.getParameter("tel");
+            cuerpomsj += "</th>";
+            cuerpomsj += "</tr>";
+            cuerpomsj += "</table>";
+            cuerpomsj += "</div>";
+            cuerpomsj += "<br>";
+            cuerpomsj += "<br>";
+            cuerpomsj += "<a align=\"center\" href=\"http://localhost:8080/Com.Booking/index.jsp\" style=\"text-decoration: none;\">Pagina oficial de Booking Routers</a>";
+            cuerpomsj += "<br>";
+            cuerpomsj += "<span>Booking Routers &copy; 2015</span>";
+           // String cuerpomsj = "Bienvenido , para ingresar al sistema su usuario y contraseña son: " + " Usuario " + pdto.getIdPersona() + " Contraseña  " + pdto.getContraseña();
+            String para = pdto.getCorreoElectronico();
+            Correo.sendMail(asunto, cuerpomsj, para);
             
+        } else if (request.getParameter("id") != null) {
+            personasDAO pdao = new personasDAO();
+            String eliminado = facadeP.eliminar(Long.parseLong(request.getParameter("id")));
+            response.sendRedirect("verificarRegistro.jsp?msgSalida=" + eliminado);
+
+        } else if (request.getParameter("idReserva") != null) {
+            reserDAO pdao = new reserDAO();
+            String eliminado = facadeP.EliminarReseva(Integer.parseInt(request.getParameter("idReserva")));
+            response.sendRedirect("CancelarR.jsp?msgSalida=" + eliminado);
+        } else if (request.getParameter("idPersona") != null) {
+            personasDAO pdao = new personasDAO();
+            personasDTO eliminado = new personasDTO();
+            eliminado = facadeP.ListarUnaPersona(Long.parseLong(request.getParameter("idPersona")));
+            HttpSession misesion = request.getSession(true);
+            misesion.setAttribute("logueado", eliminado);
+            response.sendRedirect("asignarRol.jsp?eliminado=" + eliminado);
+        } else if (request.getParameter("action") != null) {
+            HttpSession sesion = request.getSession(false);
+            sesion.removeAttribute("logueado");
+            sesion.invalidate();
+            response.sendRedirect("index.jsp");
+
         }
+      
+            
+        
       
     }
 

@@ -39,7 +39,7 @@
                     </div>
                     <div style=" background:#DDDDDD;  text-align: center; border-radius: 15; padding-top: 5px; border-radius: 15px; ">
                         <a href="index.jsp" style="color:black; text-decoration: none;">Inicio</a>
-                        <a href="registro.jsp" style="color: black; text-decoration: none;">Registro Conductor</a>
+                        <a href="registroConductor.jsp" style="color: black; text-decoration: none;">Registro Conductor</a>
                     </div> 
                     <tr>
                         <td><label for="nombres" class="labele"><strong>Nombres<font color="#FF0000">*</strong></label></font></td>
@@ -106,6 +106,12 @@
                                     <option value="Hombre">Hombre</option>
                                 </select>
                         </td>
+                    </tr>
+                       <tr> 
+                        <td><label for="con" class="labele"><strong>Contraseña<font color="#FF0000">*</strong></label></font></td>  
+                        <td><input name="con" type="password" id="con" style="width:250px; height:25px" tabindex="17" autofocus required class="form-control inputtext">
+                        <td><label for="con" class="labele"><strong>Confirmar<font color="#FF0000">* </strong></label></font>  
+                        <td><input name="vcon" type="password" id="vcon" style="width:250px; height:25px" placeholder="Comfirme su contraseña" tabindex="18" autofocus required class="form-control inputtext"></td>
                     </tr>
                    
                     <tr>

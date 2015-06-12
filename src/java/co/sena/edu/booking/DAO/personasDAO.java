@@ -186,24 +186,25 @@ public String actualizarRol(rolusuarioDTO rol, Connection cnn) {
         try {
 
             int resultado = 0;
-            pstmt = cnn.prepareStatement("INSERT INTO personas VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            pstmt = cnn.prepareStatement("INSERT INTO personas VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)");
             pstmt.setLong(1, newPersona.getIdPersona());
             pstmt.setString(2, newPersona.getCorreoElectronico());
             pstmt.setInt(3, newPersona.getIdCiudad());
             pstmt.setInt(4, newPersona.getIdNacionalidad());
             pstmt.setString(5, newPersona.getNombres());
             pstmt.setString(6, newPersona.getApellidos());
-            pstmt.setString(7, newPersona.getFechaNto());          
-            pstmt.setInt(8, newPersona.getIdestadousuarios());
-            pstmt.setString(9, newPersona.getObservaciones());
-            pstmt.setString(10, newPersona.getSexo());
-            pstmt.setInt(11, newPersona.getTelefono());
+            pstmt.setString(7, newPersona.getFechaNto());
+             pstmt.setString(8, newPersona.getContrasena());
+            pstmt.setInt(9, newPersona.getIdestadousuarios());
+            pstmt.setString(10, newPersona.getObservaciones());
+            pstmt.setString(11, newPersona.getSexo());
+            pstmt.setInt(12, newPersona.getTelefono());
                       
             
             resultado = pstmt.executeUpdate();
 
             if (resultado != 0) {
-               msgSalida = "El usuario a sido registrado exitosamente. ";
+               msgSalida = "El Conductor a sido registrado exitosamente. ";
             } else {
                 // salida = "Ha ocurrido un problema al crear el profesor. Contacte al administrador";
 
